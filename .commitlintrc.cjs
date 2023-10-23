@@ -4,7 +4,7 @@ const config = {
   rules: {
     'subject-case': [2, 'always', 'sentence-case'],
     // commitlint jira rules @see https://github.com/noahlaux/commitlint-jira#rules
-    'jira-task-id-project-key': [2, 'always', ['WDOPS', 'NOJIRA']],
+    'jira-task-id-project-key': [2, 'always', ['AKOS', 'NOJIRA']],
   },
 }
 

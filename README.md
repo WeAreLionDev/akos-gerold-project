@@ -1,4 +1,4 @@
-# %WEBSITE_TITLE% Astro + ReactJS + Sanity Setup
+# Akos Gerold Astro + ReactJS + Sanity Setup
 
 This is the templatep project for we are lion dev Astro Blog websites, that use ReactJS library as a client side framework. We use Sanity.io as a headless CMS.
 
@@ -92,7 +92,7 @@ After checking our code, a check is issued for our commit message (we are using 
 ## ⚙️ Project Template Setup
 
 - Please use the `Use this template` option and clone to your respective repository
-- After creating a new repository, proceed to clone it to your local machine and rename `%WEBSITE_TITLE%`, `weareliondev-astro-template` and `%project-name%` to according values. _(this will be automated in the future via CLI)_
+- After creating a new repository, proceed to clone it to your local machine and rename `Akos Gerold`, `akos-gerold-project` and `%project-name%` to according values. _(this will be automated in the future via CLI)_
 - After creating the new repo, proceed to do `yarn` to install the nescessary packages. (_keep in mind the project is using Yarn v2_)
 - Go inside the `.commitlintrc.cjs` and set the proper `jira-task-id-project-key` from `WDOPS` to your JIRA assigned tag
 - After changing all this, create our first branch `feature/XXX-000-setup-sanity`, after transitioning to that branch we need to ensure that we have `@sanity/cli` installed globally on our pc and then run the command

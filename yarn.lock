@@ -2461,6 +2461,66 @@ __metadata:
   languageName: node
   linkType: hard
 
+"akos-gerold-project@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "akos-gerold-project@workspace:."
+  dependencies:
+    "@astrojs/react": ^3.0.3
+    "@astrojs/rss": ^3.0.0
+    "@astrojs/sitemap": ^3.0.1
+    "@astrojs/tailwind": ^5.0.2
+    "@commitlint/cli": ^17.8.0
+    "@commitlint/config-conventional": ^17.8.0
+    "@fortawesome/fontawesome-free": ^6.4.2
+    "@fortawesome/fontawesome-pro": ^6.4.2
+    "@fortawesome/fontawesome-svg-core": ^6.4.2
+    "@fortawesome/free-brands-svg-icons": ^6.4.2
+    "@fortawesome/react-fontawesome": ^0.2.0
+    "@fortawesome/sharp-light-svg-icons": ^6.4.2
+    "@fortawesome/sharp-solid-svg-icons": ^6.4.2
+    "@mindblowing/commitlint-config-jira": ^1.7.0
+    "@mindblowing/commitlint-jira-utils": ^1.7.0
+    "@mindblowing/commitlint-plugin-jira-rules": ^1.7.0
+    "@nanostores/react": ^0.7.1
+    "@sanity/astro": ^2.1.1
+    "@sanity/client": ^6.6.0
+    "@sanity/image-url": ^1.0.2
+    "@tailwindcss/typography": ^0.5.10
+    "@trivago/prettier-plugin-sort-imports": ^4.2.0
+    "@types/react": ^18.0.21
+    "@types/react-dom": ^18.0.6
+    "@typescript-eslint/eslint-plugin": ^6.7.5
+    "@typescript-eslint/parser": ^6.7.5
+    astro: ^3.3.0
+    astro-portabletext: ^0.9.6
+    astro-robots-txt: ^1.0.0
+    classnames: ^2.3.2
+    eslint: ^8.51.0
+    eslint-config-prettier: ^9.0.0
+    eslint-plugin-astro: ^0.29.1
+    eslint-plugin-jsx-a11y: ^6.7.1
+    eslint-plugin-no-relative-import-paths: ^1.5.3
+    eslint-plugin-prettier: ^5.0.1
+    eslint-plugin-react: ^7.33.2
+    eslint-plugin-react-hooks: ^4.6.0
+    eslint-plugin-testing-library: ^6.1.0
+    framer-motion: ^10.16.4
+    husky: ^8.0.3
+    jira-prepare-commit-msg: ^1.7.2
+    nanostores: ^0.9.4
+    patch-package: ^8.0.0
+    postinstall: ^0.8.0
+    prettier: ^3.0.3
+    prettier-plugin-astro: ^0.12.0
+    prettier-plugin-css-order: ^2.0.1
+    prettier-plugin-tailwindcss: ^0.5.6
+    react: ^18.0.0
+    react-dom: ^18.0.0
+    tailwindcss: ^3.0.24
+    zod: ^3.22.4
+  languageName: unknown
+  linkType: soft
+
 "ansi-align@npm:^3.0.1":
   version: 3.0.1
   resolution: "ansi-align@npm:3.0.1"
@@ -11991,66 +12051,6 @@ __metadata:
   checksum: eba070e78deb408ae8defa4d36b429f084b2b47a4741c4a9be3f27a0a3d1845e277e3072b04391a138f7e43776842627d1334e448ff13ff90ad9fb1214ee7091
   languageName: node
   linkType: hard
-
-"weareliondev-astro-template@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "weareliondev-astro-template@workspace:."
-  dependencies:
-    "@astrojs/react": ^3.0.3
-    "@astrojs/rss": ^3.0.0
-    "@astrojs/sitemap": ^3.0.1
-    "@astrojs/tailwind": ^5.0.2
-    "@commitlint/cli": ^17.8.0
-    "@commitlint/config-conventional": ^17.8.0
-    "@fortawesome/fontawesome-free": ^6.4.2
-    "@fortawesome/fontawesome-pro": ^6.4.2
-    "@fortawesome/fontawesome-svg-core": ^6.4.2
-    "@fortawesome/free-brands-svg-icons": ^6.4.2
-    "@fortawesome/react-fontawesome": ^0.2.0
-    "@fortawesome/sharp-light-svg-icons": ^6.4.2
-    "@fortawesome/sharp-solid-svg-icons": ^6.4.2
-    "@mindblowing/commitlint-config-jira": ^1.7.0
-    "@mindblowing/commitlint-jira-utils": ^1.7.0
-    "@mindblowing/commitlint-plugin-jira-rules": ^1.7.0
-    "@nanostores/react": ^0.7.1
-    "@sanity/astro": ^2.1.1
-    "@sanity/client": ^6.6.0
-    "@sanity/image-url": ^1.0.2
-    "@tailwindcss/typography": ^0.5.10
-    "@trivago/prettier-plugin-sort-imports": ^4.2.0
-    "@types/react": ^18.0.21
-    "@types/react-dom": ^18.0.6
-    "@typescript-eslint/eslint-plugin": ^6.7.5
-    "@typescript-eslint/parser": ^6.7.5
-    astro: ^3.3.0
-    astro-portabletext: ^0.9.6
-    astro-robots-txt: ^1.0.0
-    classnames: ^2.3.2
-    eslint: ^8.51.0
-    eslint-config-prettier: ^9.0.0
-    eslint-plugin-astro: ^0.29.1
-    eslint-plugin-jsx-a11y: ^6.7.1
-    eslint-plugin-no-relative-import-paths: ^1.5.3
-    eslint-plugin-prettier: ^5.0.1
-    eslint-plugin-react: ^7.33.2
-    eslint-plugin-react-hooks: ^4.6.0
-    eslint-plugin-testing-library: ^6.1.0
-    framer-motion: ^10.16.4
-    husky: ^8.0.3
-    jira-prepare-commit-msg: ^1.7.2
-    nanostores: ^0.9.4
-    patch-package: ^8.0.0
-    postinstall: ^0.8.0
-    prettier: ^3.0.3
-    prettier-plugin-astro: ^0.12.0
-    prettier-plugin-css-order: ^2.0.1
-    prettier-plugin-tailwindcss: ^0.5.6
-    react: ^18.0.0
-    react-dom: ^18.0.0
-    tailwindcss: ^3.0.24
-    zod: ^3.22.4
-  languageName: unknown
-  linkType: soft
 
 "web-namespaces@npm:^2.0.0":
   version: 2.0.1
