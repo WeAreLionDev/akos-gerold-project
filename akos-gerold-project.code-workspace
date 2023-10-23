@@ -1,11 +1,11 @@
 {
   "folders": [
     {
-      "name": "%WEBSITE_TITLE% Blog Astro ReactJS",
+      "name": "Akos Gerold Blog Astro ReactJS",
       "path": "./",
       "prettier.configPath": "./.prettierrc.cjs"
     },
-    { "name": "%WEBSITE_TITLE% Sanity Blogging Studio", "path": "./sanity", "prettier.configPath": "./.prettierrc.cjs" }
+    { "name": "Akos Gerold Sanity Blogging Studio", "path": "./sanity", "prettier.configPath": "./.prettierrc.cjs" }
   ],
   "extensions": {
     "recommendations": [
