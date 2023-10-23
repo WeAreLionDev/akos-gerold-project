@@ -1,0 +1,44 @@
+:root {
+  --scrollbar-width: 15px;
+  --font-size: 16px;
+}
+
+html,
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.lock-scroll {
+  height: 100vh;
+  padding-right: var(--scrollbar-width);
+  overflow: hidden !important;
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+body {
+  position: relative;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: 'header' 'main' 'footer';
+}
+
+.wrapper > main {
+  grid-area: main;
+  @apply flex flex-col;
+}
+.wrapper > header {
+  grid-area: header;
+}
+
+.wrapper > footer {
+  grid-area: footer;
+}

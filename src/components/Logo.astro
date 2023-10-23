@@ -1,0 +1,9 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+type Props = HTMLAttributes<'a'>
+
+const { class: classNames, ...props } = Astro.props
+---
+
+<a {...props} class:list={['font-bold', classNames]} href="/">Logo</a>

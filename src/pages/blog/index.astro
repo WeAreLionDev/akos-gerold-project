@@ -1,0 +1,47 @@
+---
+import { SectionContainer } from 'src/components/react'
+import FeaturedImage from 'src/components/sanity/FeaturedImage.astro'
+import { useGetPostsQuery, useGetTagsQuery } from 'src/clients/sanity'
+import { SITE_DESCRIPTION, SITE_TITLE_PREFIX } from 'src/config/consts'
+import Layout from 'src/layouts/Layout.astro'
+
+const BLOG_PAGE_TITLE = `${SITE_TITLE_PREFIX} My Blog`
+const BLOG_PAGE_DESCRIPTION = SITE_DESCRIPTION
+
+export async function getTags() {
+  return await useGetTagsQuery(true)
+}
+
+export async function getPosts() {
+  return await useGetPostsQuery(true)
+}
+
+const posts = await getPosts()
+---
+
+<Layout title={BLOG_PAGE_TITLE} description={BLOG_PAGE_DESCRIPTION}>
+  <SectionContainer className="my-24" containerClass="flex flex-col gap-20">
+    <h1 class="text-gray text-4xl font-medium uppercase md:text-5xl lg:text-6xl">Articles and news</h1>
+    {
+      posts.map(({ featuredImage, title, slug, description }) => (
+        <div class="flex w-full flex-col gap-12 md:flex-row">
+          <div class="w-full md:w-1/2 lg:w-2/5">
+            {featuredImage && <FeaturedImage class="aspect-square" asset={featuredImage.asset.url} alt={title} />}
+          </div>
+
+          <div class="flex w-full flex-col justify-center gap-4 md:w-1/2 lg:w-3/5">
+            <h2 class="text-gray max-w-sm text-xl  md:text-2xl lg:text-3xl">{title}</h2>
+            <p class="text-gray max-w-sm text-lg font-light lowercase md:text-xl lg:text-2xl">{description}</p>
+
+            <a
+              class="border-gray text-gray hover:border-secondary hover:text-secondary group-hover:text-secondary group flex max-w-fit items-center gap-2 border-b py-1 pt-4 text-lg font-medium uppercase md:text-xl lg:text-2xl"
+              href={slug}
+            >
+              Read more
+            </a>
+          </div>
+        </div>
+      ))
+    }
+  </SectionContainer>
+</Layout>

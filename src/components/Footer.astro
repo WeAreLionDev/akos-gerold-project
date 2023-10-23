@@ -1,0 +1,19 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import classNames from 'classnames'
+import { FOOTER_LINKS } from 'src/config'
+import FooterLink from 'src/components/FooterLink.astro'
+
+type Props = HTMLAttributes<'footer'>
+const { class: className } = Astro.props
+---
+
+<footer class={classNames('w-full', className)}>
+  <div
+    class="container mx-auto flex w-full flex-col items-center justify-between gap-8 border-t px-5 py-14 md:flex-row md:gap-0 md:px-10 lg:px-12"
+  >
+    <ul class="flex items-center gap-2 md:gap-8 lg:gap-28">
+      {FOOTER_LINKS.map((link) => <FooterLink {...link} />)}
+    </ul>
+  </div>
+</footer>

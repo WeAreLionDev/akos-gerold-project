@@ -1,0 +1,11 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+type Props = Pick<HTMLAttributes<'a'>, 'href' | 'class'> & { label: string }
+
+const { href, label } = Astro.props
+---
+
+<li>
+  <a href={href} target="_blank" class="hover:text-secondary" rel="noopener noreferrer">{label}</a>
+</li>

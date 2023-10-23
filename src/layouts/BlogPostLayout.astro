@@ -1,0 +1,35 @@
+---
+import type { PostType } from 'src/clients/sanity'
+import Layout from './Layout.astro'
+import FeaturedImage from 'src/components/sanity/FeaturedImage.astro'
+
+type Props = Pick<PostType, 'title' | 'description' | 'pubDate' | 'upDate' | 'featuredImage'>
+
+const { title, description, featuredImage } = Astro.props
+---
+
+<Layout title={title} description={description}>
+  <section class="container mx-auto">
+    <div class="my-12 flex flex-col px-5 md:px-10 lg:px-12">
+      <div class="mb-12 flex flex-col gap-12 md:mb-20 lg:mb-28">
+        <h1 class="text-3xl font-medium text-white md:text-4xl lg:text-5xl">{title}</h1>
+        <p class="text-2xl font-semibold text-white md:text-3xl lg:text-4xl">{description}</p>
+      </div>
+
+      <div class="mb-20 flex w-full items-start justify-between">
+        <div class="flex items-center gap-2 border-b border-white py-1">
+          <a class="text-lg uppercase text-white md:text-xl lg:text-2xl" target="_blank" href="/">Read more</a>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 19" fill="none">
+            <path
+              d="M19.8827 3.1227C19.9504 2.29705 19.336 1.57279 18.5104 1.50503L5.05564 0.400729C4.22999 0.332964 3.50573 0.947352 3.43796 1.773C3.3702 2.59865 3.98459 3.32291 4.81024 3.39068L16.77 4.37227L15.7884 16.3321C15.7207 17.1577 16.335 17.882 17.1607 17.9497C17.9864 18.0175 18.7106 17.4031 18.7784 16.5775L19.8827 3.1227ZM1.97034 18.8939L19.358 4.14387L17.4174 1.85613L0.0296561 16.6061L1.97034 18.8939Z"
+              fill="#E9E9E9"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="mb-28 w-full">
+        {featuredImage && <FeaturedImage asset={featuredImage} alt={description} />}
+      </div>
+      <slot />
+    </div>
+  </section>
+</Layout>

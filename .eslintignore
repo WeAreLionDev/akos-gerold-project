@@ -1,0 +1,16 @@
+.yarn
+dist
+node_modules
+build
+.ps
+.ssh
+.vscode
+.astro
+src/env.d.ts
+.eslintrc.cjs
+.prettierrc.cjs
+tailwind.config.cjs
+.commitlintrc.cjs
+jira-prepare-commit-msg.config.cjs
+.lintstagedrc.cjs
+deployment/env.mjs
