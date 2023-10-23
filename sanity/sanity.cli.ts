@@ -1,4 +1,4 @@
-import {defineCliConfig} from 'sanity/cli'
+import { defineCliConfig } from "sanity/cli";
 
 export default defineCliConfig({
   api: {
@@ -6,8 +6,8 @@ export default defineCliConfig({
     dataset: process.env.SANITY_STUDIO_DATASET,
   },
   server: {
-    hostname: process.env.SANITY_HOST ?? '0.0.0.0', //so the docker instance routes properly
-    port: parseInt(process.env.SANITY_PORT ?? '3333', 10),
+    hostname: process.env.SANITY_HOST ?? "0.0.0.0", //so the docker instance routes properly
+    port: parseInt(process.env.SANITY_PORT ?? "3333", 10),
   },
   vite: {
     server: {
@@ -16,4 +16,4 @@ export default defineCliConfig({
       },
     },
   },
-})
+});
