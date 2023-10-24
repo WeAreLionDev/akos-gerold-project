@@ -3,13 +3,14 @@ import type { NavigationLinkType } from 'src/types'
 import Link from './Link.astro'
 
 import type { HTMLAttributes } from 'astro/types'
+
 type Props = HTMLAttributes<'a'> & NavigationLinkType
 
 const { href, label } = Astro.props
 ---
 
 <li>
-  <Link class="group" href={href}>
-    <span class="text-lg font-bold uppercase tracking-wide md:text-xl lg:text-2xl">{label}</span>
+  <Link href={href} class="group text-zinc-100 hover:text-amber-400">
+    <span class="text-lg tracking-wide lg:text-xl">{label}</span>
   </Link>
 </li>

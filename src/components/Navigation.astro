@@ -3,7 +3,7 @@ import { NAVIGATION_LINKS } from 'src/config'
 import NavigationLink from './NavigationLink.astro'
 ---
 
-<nav class="flex flex-col items-center gap-4 py-4 md:flex-row md:py-8">
+<nav class="flex flex-col items-center md:flex-row">
   <ul class="flex flex-col items-center md:flex-row">
     {NAVIGATION_LINKS.map((link) => <NavigationLink {...link} />)}
   </ul>
