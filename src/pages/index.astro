@@ -4,11 +4,14 @@ import MyClientsSection from 'src/components/homepage/MyClientsSection.astro'
 import OfferHelpSection from 'src/components/homepage/OfferHelpSection.astro'
 import ServiceSection from 'src/components/homepage/ServiceSection.astro'
 import WelcomeSection from 'src/components/homepage/WelcomeSection.astro'
+import WhatMyClientsThinkSection from 'src/components/homepage/WhatMyClientsThinkSection.astro'
 import Layout from 'src/layouts/Layout.astro'
 import SERVICES from 'src/mocks/services.json'
-import type { ServiceType } from 'src/types'
+import TESTIMONIALS from 'src/mocks/testimonials.json'
+import type { ServiceType, TestimonialType } from 'src/types'
 
 const services: ServiceType[] = SERVICES.map((service: unknown) => service as unknown as ServiceType)
+const testimonials: TestimonialType[] = TESTIMONIALS.map((testimonial: unknown) => testimonial as unknown as TestimonialType)
 ---
 
 <Layout title="Akos Gerold Astro + Sanity.io Template" description="Metadescription">
@@ -17,4 +20,5 @@ const services: ServiceType[] = SERVICES.map((service: unknown) => service as un
   <MyClientsSection />
   <OfferHelpSection />
   {services.map((service) => <ServiceSection {...service} />)}
+  <WhatMyClientsThinkSection testimonials={testimonials} />
 </Layout>
