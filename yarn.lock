@@ -1223,6 +1223,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fortawesome/sharp-regular-svg-icons@npm:^6.4.2":
+  version: 6.4.2
+  resolution: "@fortawesome/sharp-regular-svg-icons@npm:6.4.2::__archiveUrl=https%3A%2F%2Fnpm.fontawesome.com%2F%40fortawesome%2Fsharp-regular-svg-icons%2F-%2F6.4.2%2Fsharp-regular-svg-icons-6.4.2.tgz"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": "npm:6.4.2"
+  checksum: 4bc13e246f010e81d2ef0e519b0b08228c14aa35d75d25f3fbbccfb4ee061f216319afef94272763596ecd3313b5e27f00cc037caa5c241bd6c7a7b1b607d890
+  languageName: node
+  linkType: hard
+
 "@fortawesome/sharp-solid-svg-icons@npm:^6.4.2":
   version: 6.4.2
   resolution: "@fortawesome/sharp-solid-svg-icons@npm:6.4.2::__archiveUrl=https%3A%2F%2Fnpm.fontawesome.com%2F%40fortawesome%2Fsharp-solid-svg-icons%2F-%2F6.4.2%2Fsharp-solid-svg-icons-6.4.2.tgz"
@@ -2477,6 +2486,7 @@ __metadata:
     "@fortawesome/free-brands-svg-icons": "npm:^6.4.2"
     "@fortawesome/react-fontawesome": "npm:^0.2.0"
     "@fortawesome/sharp-light-svg-icons": "npm:^6.4.2"
+    "@fortawesome/sharp-regular-svg-icons": "npm:^6.4.2"
     "@fortawesome/sharp-solid-svg-icons": "npm:^6.4.2"
     "@mindblowing/commitlint-config-jira": "npm:^1.7.0"
     "@mindblowing/commitlint-jira-utils": "npm:^1.7.0"
