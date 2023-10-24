@@ -1,0 +1,51 @@
+---
+import classNames from 'classnames'
+import { SectionContainer } from 'src/components/react'
+import type { ServiceType } from 'src/types'
+
+type Props = ServiceType
+
+const { title, body, image, testimonial, orientation, variant } = Astro.props
+
+const variantClasses = {
+  dark: 'bg-slate-900 text-zinc-100',
+  light: 'bg-zinc-100 text-slate-900',
+}
+
+const variantTestimonialClasses = {
+  dark: 'border-zinc-100',
+  light: 'border-slate-900',
+}
+
+const orientationClasses = {
+  left: 'flex-row',
+  right: 'flex-row-reverse',
+}
+const orientationTestimonalClasses = {
+  left: 'self-start',
+  right: 'self-end',
+}
+---
+
+<SectionContainer className={classNames(variantClasses[variant], 'py-15 md:py-32')} containerClass="flex flex-col">
+  <div class={classNames(orientationClasses[orientation], 'mb-10 flex flex-row justify-between')}>
+    <div class="flex md:max-w-xl">
+      <img src={image} alt={title} class="h-auto w-full" />
+    </div>
+    <div class="flex flex-col items-start md:max-w-2xl">
+      <h2 class="mb-10 font-poppins text-4xl font-bold">{title}</h2>
+      <p class="mb-10 text-2xl">{body}</p>
+      <a
+        href="/contact"
+        class="rounded bg-amber-400 p-4 font-poppins font-bold text-stone-950 decoration-2 underline-offset-2 shadow transition-all duration-300 ease-in-out hover:underline hover:underline-offset-4"
+        >Contact me</a
+      >
+    </div>
+  </div>
+  <div
+    class={classNames(variantTestimonialClasses[variant], orientationTestimonalClasses[orientation], 'flex max-w-xs flex-col border p-3')}
+  >
+    <p class="mb-5 text-sm font-medium">“{testimonial.body}”</p>
+    <h3 class="font-poppins text-base font-semibold">{testimonial.author}</h3>
+  </div>
+</SectionContainer>

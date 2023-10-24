@@ -43,3 +43,9 @@ body {
 .wrapper > footer {
   grid-area: footer;
 }
+
+.client-section {
+  @apply grid gap-x-5 gap-y-10;
+  grid-template-columns: repeat(12, minmax(4rem, 1fr));
+  grid-auto-rows: minmax(4rem, 1fr);
+}

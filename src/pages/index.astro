@@ -1,10 +1,20 @@
 ---
 import HeroSection from 'src/components/homepage/HeroSection.astro'
+import MyClientsSection from 'src/components/homepage/MyClientsSection.astro'
+import OfferHelpSection from 'src/components/homepage/OfferHelpSection.astro'
+import ServiceSection from 'src/components/homepage/ServiceSection.astro'
 import WelcomeSection from 'src/components/homepage/WelcomeSection.astro'
 import Layout from 'src/layouts/Layout.astro'
+import SERVICES from 'src/mocks/services.json'
+import type { ServiceType } from 'src/types'
+
+const services: ServiceType[] = SERVICES.map((service: unknown) => service as unknown as ServiceType)
 ---
 
 <Layout title="Akos Gerold Astro + Sanity.io Template" description="Metadescription">
   <HeroSection />
   <WelcomeSection />
+  <MyClientsSection />
+  <OfferHelpSection />
+  {services.map((service) => <ServiceSection {...service} />)}
 </Layout>
