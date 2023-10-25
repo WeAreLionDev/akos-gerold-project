@@ -4,7 +4,7 @@ import { type FC, useRef } from 'react'
 import './ClientCarousel.css'
 import type { ClientCarouselProps } from './ClientCarousel.interface'
 
-const ClientCarousel: FC<ClientCarouselProps> = () => {
+const ClientCarousel: FC<ClientCarouselProps> = ({ clients }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const animationControls = useAnimationControls()
   const onReset = () => {
@@ -24,14 +24,10 @@ const ClientCarousel: FC<ClientCarouselProps> = () => {
         dragElastic={1}
         onDragEnd={onReset}
       >
-        {Array.from(Array(8)).map((_, id) => (
-          <div key={`${id}-rd`} className="bg-red-500" />
-        ))}
-        {Array.from(Array(8)).map((_, id) => (
-          <div key={`${id}-bl`} className="bg-blue-500" />
-        ))}
-        {Array.from(Array(8)).map((_, id) => (
-          <div key={`${id}-blc`} className="bg-black" />
+        {clients.map(({ id, logo }) => (
+          <div key={id} className="flex w-32 flex-col">
+            <img src={logo} alt={id} className="w-ful block h-auto object-cover" />
+          </div>
         ))}
       </motion.div>
       <div className="client-scrollbar">

@@ -1,3 +1,5 @@
 import type { HTMLAttributes } from 'react'
 
-export type ClientCarouselProps = HTMLAttributes<HTMLDivElement>
+import type { ClientType } from 'src/types'
+
+export type ClientCarouselProps = HTMLAttributes<HTMLDivElement> & { clients: ClientType[] }

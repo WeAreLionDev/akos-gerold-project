@@ -1,0 +1,78 @@
+[
+  {
+    "id": "accenture",
+    "logo": "clients/accenture.svg"
+  },
+  {
+    "id": "acterience",
+    "logo": "clients/acterience.svg"
+  },
+  {
+    "id": "apex-brasil",
+    "logo": "clients/apex-brasil.svg"
+  },
+  {
+    "id": "bmw-group",
+    "logo": "clients/bmw-group.svg"
+  },
+  {
+    "id": "bmw",
+    "logo": "clients/bmw.svg"
+  },
+  {
+    "id": "cade",
+    "logo": "clients/cade.png"
+  },
+  {
+    "id": "castelo-forte",
+    "logo": "clients/castelo-forte.png"
+  },
+  {
+    "id": "ccbill",
+    "logo": "clients/ccbill.svg"
+  },
+  {
+    "id": "havas",
+    "logo": "clients/havas.svg"
+  },
+  {
+    "id": "kraftheinz",
+    "logo": "clients/kraftheinz.svg"
+  },
+  {
+    "id": "lemann",
+    "logo": "clients/lemann.svg"
+  },
+  {
+    "id": "levi9",
+    "logo": "clients/levi9.png"
+  },
+  {
+    "id": "man",
+    "logo": "clients/man.svg"
+  },
+  {
+    "id": "roland-berger",
+    "logo": "clients/roland-berger.png"
+  },
+  {
+    "id": "toastmasters",
+    "logo": "clients/toastmasters.png"
+  },
+  {
+    "id": "unesco",
+    "logo": "clients/unesco.svg"
+  },
+  {
+    "id": "we",
+    "logo": "we.png"
+  },
+  {
+    "id": "wunderman-thopson",
+    "logo": "wunderman-thopson.svg"
+  },
+  {
+    "id": "ziepuls",
+    "logo": "ziepuls.png"
+  }
+]
