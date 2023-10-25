@@ -2,7 +2,7 @@
 import { ClientCarousel, SectionContainer } from 'src/components/react'
 ---
 
-<SectionContainer className="bg-stone-100 py-5 text-stone-950 md:py-10 lg:py-20" containerClass="flex flex-col">
-  <h2 class="mb-10 text-center font-poppins text-5xl font-bold md:mb-20">My clients</h2>
-  <ClientCarousel />
+<SectionContainer className="bg-stone-100 py-20 text-stone-950 xl:py-40" containerClass="flex flex-col items-center overflow-hidden">
+  <h2 class="mb-20 text-center font-poppins text-5xl font-bold xl:mb-40">My clients</h2>
+  <ClientCarousel client:load />
 </SectionContainer>
