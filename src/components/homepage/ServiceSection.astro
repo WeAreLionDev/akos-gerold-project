@@ -1,6 +1,7 @@
 ---
 import classNames from 'classnames'
 import { SectionContainer, TestimonialBlock } from 'src/components/react'
+import { CONTACT_EMAIL } from 'src/config'
 import type { ServiceType } from 'src/types'
 
 type Props = ServiceType
@@ -37,7 +38,7 @@ const orientationTestimonalClasses = {
       <p class="mb-10 text-lg md:text-2xl">{body}</p>
       <TestimonialBlock {...testimonial} className={classNames(variantTestimonialClasses[variant], 'mb-10 flex md:hidden')} />
       <a
-        href="/contact"
+        href=`mailto:${CONTACT_EMAIL}`
         class="rounded bg-amber-400 p-4 font-poppins font-bold text-stone-950 decoration-2 underline-offset-2 shadow transition-all duration-300 ease-in-out hover:underline hover:underline-offset-4"
         >Contact me</a
       >

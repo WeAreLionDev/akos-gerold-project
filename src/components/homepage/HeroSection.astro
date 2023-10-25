@@ -1,5 +1,6 @@
 ---
 import { SectionContainer } from 'src/components/react'
+import { CONTACT_EMAIL } from 'src/config'
 ---
 
 <SectionContainer
@@ -21,12 +22,12 @@ import { SectionContainer } from 'src/components/react'
           We have turned the science into training & consultancy, so you can sell, convert and grow like Apple, Amazon and Google
         </h4>
         <a
-          href="/contact"
+          href=`mailto:${CONTACT_EMAIL}`
           class="mb-5 rounded bg-amber-400 p-4 font-poppins font-bold text-stone-950 decoration-2 underline-offset-2 shadow transition-all duration-300 ease-in-out hover:underline hover:underline-offset-4 lg:mb-10"
           >Book a free call</a
         >
         <a
-          href="/about"
+          href=`mailto:${CONTACT_EMAIL}`
           class="text-xs font-semibold underline transition-colors duration-300 ease-in-out hover:decoration-amber-400 md:text-lg"
           >Find out about our services</a
         >

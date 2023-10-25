@@ -1,5 +1,6 @@
 ---
 import { SectionContainer } from 'src/components/react'
+import { CONTACT_EMAIL } from 'src/config'
 ---
 
 <SectionContainer
@@ -13,7 +14,7 @@ import { SectionContainer } from 'src/components/react'
       you can influence decisions better.
     </p>
     <a
-      href="/contact"
+      href=`mailto:${CONTACT_EMAIL}`
       class="rounded bg-amber-400 px-5 py-5 font-poppins text-xl font-bold text-stone-950 decoration-2 underline-offset-2 shadow transition-all duration-300 ease-in-out hover:underline hover:underline-offset-4 md:px-10 md:py-5 md:text-2xl"
       >Contact me</a
     >
