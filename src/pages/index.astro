@@ -6,6 +6,7 @@ import OfferHelpSection from 'src/components/homepage/OfferHelpSection.astro'
 import ServiceSection from 'src/components/homepage/ServiceSection.astro'
 import WelcomeSection from 'src/components/homepage/WelcomeSection.astro'
 import WhatMyClientsThinkSection from 'src/components/homepage/WhatMyClientsThinkSection.astro'
+import WorkWithUsSection from 'src/components/homepage/WorkWithUsSection.astro'
 import Layout from 'src/layouts/Layout.astro'
 import SERVICES from 'src/mocks/services.json'
 import TESTIMONIALS from 'src/mocks/testimonials.json'
@@ -23,4 +24,5 @@ const testimonials: TestimonialType[] = TESTIMONIALS.map((testimonial: unknown) 
   {services.map((service) => <ServiceSection {...service} />)}
   <WhatMyClientsThinkSection testimonials={testimonials} />
   <AboutMeSection />
+  <WorkWithUsSection />
 </Layout>
