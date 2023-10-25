@@ -1,5 +1,7 @@
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
+/// <reference types="@sanity/astro/module" />
+
 interface ImportMetaEnv {
   readonly FONTAWESOME_NPM_AUTH_TOKEN: string
   readonly SANITY_STUDIO_PROJECT_ID: string
