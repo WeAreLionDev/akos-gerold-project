@@ -1,6 +1,6 @@
 ---
 import classNames from 'classnames'
-import { SectionContainer } from 'src/components/react'
+import { SectionContainer, TestimonialBlock } from 'src/components/react'
 import type { ServiceType } from 'src/types'
 
 type Props = ServiceType
@@ -18,8 +18,8 @@ const variantTestimonialClasses = {
 }
 
 const orientationClasses = {
-  left: 'flex-row',
-  right: 'flex-row-reverse',
+  left: 'md:flex-row',
+  right: 'md:flex-row-reverse',
 }
 const orientationTestimonalClasses = {
   left: 'self-start',
@@ -27,14 +27,15 @@ const orientationTestimonalClasses = {
 }
 ---
 
-<SectionContainer className={classNames(variantClasses[variant], 'py-15 md:py-32')} containerClass="flex flex-col">
-  <div class={classNames(orientationClasses[orientation], 'mb-10 flex flex-row justify-between')}>
-    <div class="flex md:max-w-xl">
+<SectionContainer className={classNames(variantClasses[variant], 'py-20 md:py-40')} containerClass="flex flex-col">
+  <div class={classNames(orientationClasses[orientation], 'flex flex-col items-center md:mb-10 md:items-start md:justify-between')}>
+    <div class="mb-20 flex max-w-sm md:mb-0 md:max-w-xl">
       <img src={image} alt={title} class="h-auto w-full" />
     </div>
-    <div class="flex flex-col items-start md:max-w-2xl">
+    <div class="flex max-w-sm flex-col items-start md:max-w-2xl">
       <h2 class="mb-10 font-poppins text-4xl font-bold">{title}</h2>
-      <p class="mb-10 text-2xl">{body}</p>
+      <p class="mb-10 text-lg md:text-2xl">{body}</p>
+      <TestimonialBlock {...testimonial} className={classNames(variantTestimonialClasses[variant], 'mb-10 flex md:hidden')} />
       <a
         href="/contact"
         class="rounded bg-amber-400 p-4 font-poppins font-bold text-stone-950 decoration-2 underline-offset-2 shadow transition-all duration-300 ease-in-out hover:underline hover:underline-offset-4"
@@ -42,10 +43,8 @@ const orientationTestimonalClasses = {
       >
     </div>
   </div>
-  <div
-    class={classNames(variantTestimonialClasses[variant], orientationTestimonalClasses[orientation], 'flex max-w-xs flex-col border p-3')}
-  >
-    <p class="mb-5 text-sm font-medium">“{testimonial.body}”</p>
-    <h3 class="font-poppins text-base font-semibold">{testimonial.author}</h3>
-  </div>
+  <TestimonialBlock
+    {...testimonial}
+    className={classNames(variantTestimonialClasses[variant], orientationTestimonalClasses[orientation], 'hidden md:flex')}
+  />
 </SectionContainer>

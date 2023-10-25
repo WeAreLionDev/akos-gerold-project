@@ -12,5 +12,5 @@ const { testimonials } = Astro.props
 
 <SectionContainer className="bg-stone-100 py-5 text-stone-950 md:py-10 lg:py-20" containerClass="flex flex-col">
   <h2 class="mb-10 text-center font-poppins text-5xl font-bold md:mb-20">My clients</h2>
-  <TestimonialCarousel client:visible testimonials={testimonials} />
+  <TestimonialCarousel client:only testimonials={testimonials} />
 </SectionContainer>

@@ -2,23 +2,32 @@
 import { SectionContainer } from 'src/components/react'
 ---
 
-<SectionContainer fullWidth className="relative flex min-h-screen flex-col justify-center bg-slate-900 text-zinc-100">
-  <div class="z-10 w-full">
-    <img src="./hero_section_image.png" alt="Hero Section Image" class="h-auto w-full" />
+<SectionContainer
+  fullWidth
+  className="relative flex min-h-screen flex-col justify-center bg-slate-900 text-zinc-100 sm:min-h-0 xl:min-h-screen"
+>
+  <div class="z-10 h-full w-full">
+    <img src="./hero_section_image.png" alt="Hero Section Image" class="h-full w-full object-cover object-[80%] md:h-auto" />
   </div>
-  <div class="absolute z-20 h-full w-full">
+  <div class="absolute z-20 h-full w-full pb-40 md:pb-0">
     <div class="container mx-auto h-full">
-      <div class="flex h-full max-w-2xl flex-col items-start justify-center">
-        <h1 class="mb-10 font-poppins text-6xl font-extrabold uppercase">Persuade Ethically & Effectively</h1>
-        <h4 class="mb-10 text-2xl font-semibold capitalize tracking-wide">
+      <div
+        class="flex h-full w-full flex-col items-center justify-end sm:max-w-sm md:max-w-md md:items-start md:justify-center lg:max-w-2xl"
+      >
+        <h1 class="mb-5 text-center font-poppins text-3xl font-extrabold uppercase md:text-left lg:mb-10 lg:text-5xl xl:text-6xl">
+          Persuade Ethically & Effectively
+        </h1>
+        <h4 class="mb-5 text-center text-xs font-semibold capitalize tracking-wide md:text-left md:text-xl lg:mb-10 xl:text-2xl">
           We have turned the science into training & consultancy, so you can sell, convert and grow like Apple, Amazon and Google
         </h4>
         <a
           href="/contact"
-          class="mb-10 rounded bg-amber-400 p-4 font-poppins font-bold text-stone-950 decoration-2 underline-offset-2 shadow transition-all duration-300 ease-in-out hover:underline hover:underline-offset-4"
+          class="mb-5 rounded bg-amber-400 p-4 font-poppins font-bold text-stone-950 decoration-2 underline-offset-2 shadow transition-all duration-300 ease-in-out hover:underline hover:underline-offset-4 lg:mb-10"
           >Book a free call</a
         >
-        <a href="/about" class="text-lg font-semibold underline transition-colors duration-300 ease-in-out hover:decoration-amber-400"
+        <a
+          href="/about"
+          class="text-xs font-semibold underline transition-colors duration-300 ease-in-out hover:decoration-amber-400 md:text-lg"
           >Find out about our services</a
         >
       </div>

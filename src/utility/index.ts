@@ -1,2 +1,5 @@
 export { default as useScrollbarWidth } from './useScrollbarWidth'
 export { default as useGtag } from './useGtag'
+export * from './animationSwipePower'
+export { default as useWindowDimensions } from './useWindowDimensions'
+export { default as useMediaBreakpoint } from './useMediaBreakpoint'
