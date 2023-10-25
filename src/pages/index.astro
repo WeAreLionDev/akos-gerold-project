@@ -1,4 +1,5 @@
 ---
+import AboutMeSection from 'src/components/homepage/AboutMeSection.astro'
 import HeroSection from 'src/components/homepage/HeroSection.astro'
 import MyClientsSection from 'src/components/homepage/MyClientsSection.astro'
 import OfferHelpSection from 'src/components/homepage/OfferHelpSection.astro'
@@ -21,4 +22,5 @@ const testimonials: TestimonialType[] = TESTIMONIALS.map((testimonial: unknown) 
   <OfferHelpSection />
   {services.map((service) => <ServiceSection {...service} />)}
   <WhatMyClientsThinkSection testimonials={testimonials} />
+  <AboutMeSection />
 </Layout>

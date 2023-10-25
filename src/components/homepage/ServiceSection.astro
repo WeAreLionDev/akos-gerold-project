@@ -18,8 +18,8 @@ const variantTestimonialClasses = {
 }
 
 const orientationClasses = {
-  left: 'md:flex-row',
-  right: 'md:flex-row-reverse',
+  left: 'lg:flex-row',
+  right: 'lg:flex-row-reverse',
 }
 const orientationTestimonalClasses = {
   left: 'self-start',
@@ -29,7 +29,7 @@ const orientationTestimonalClasses = {
 
 <SectionContainer className={classNames(variantClasses[variant], 'py-20 md:py-40')} containerClass="flex flex-col">
   <div class={classNames(orientationClasses[orientation], 'flex flex-col items-center md:mb-10 md:items-start md:justify-between')}>
-    <div class="mb-20 flex max-w-sm md:mb-0 md:max-w-xl">
+    <div class="mb-20 flex max-w-sm md:max-w-xl lg:mb-0">
       <img src={image} alt={title} class="h-auto w-full" />
     </div>
     <div class="flex max-w-sm flex-col items-start md:max-w-2xl">

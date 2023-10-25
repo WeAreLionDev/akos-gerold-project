@@ -4,7 +4,7 @@ import type { FC } from 'react'
 import type { SectionContainerProps } from './SectionContainer.interface'
 
 const SectionContainer: FC<SectionContainerProps> = ({ children, className, containerClass, fullWidth, ...props }) => {
-  const containerClasses = 'w-full'
+  const containerClasses = fullWidth ? 'w-full' : ''
   if (fullWidth)
     return (
       <section {...props} className={classNames(containerClasses, className)}>
