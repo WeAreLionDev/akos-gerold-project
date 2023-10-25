@@ -24,13 +24,13 @@ const ClientCarousel: FC<ClientCarouselProps> = () => {
         dragElastic={1}
         onDragEnd={onReset}
       >
-        {Array.from(Array(8)).map((id) => (
+        {Array.from(Array(8)).map((_, id) => (
           <div key={`${id}-rd`} className="bg-red-500" />
         ))}
-        {Array.from(Array(8)).map((id) => (
+        {Array.from(Array(8)).map((_, id) => (
           <div key={`${id}-bl`} className="bg-blue-500" />
         ))}
-        {Array.from(Array(8)).map((id) => (
+        {Array.from(Array(8)).map((_, id) => (
           <div key={`${id}-blc`} className="bg-black" />
         ))}
       </motion.div>

@@ -8,7 +8,7 @@ interface UseCarouselHookProps {
   (
     initialCarouselPosition: number,
     items: number,
-    slideOffset: number,
+    slideOffsets: CarouselBreakpoints,
   ): {
     containerRef: RefObject<HTMLDivElement>
     carouselWidth: number
@@ -21,7 +21,7 @@ interface UseCarouselHookProps {
   }
 }
 
-type CarouselBreakpoints = {
+export type CarouselBreakpoints = {
   sm: number
   md: number
   lg: number
@@ -32,12 +32,12 @@ type CarouselBreakpoints = {
 const CAROUSEL_BREAKPOINTS: CarouselBreakpoints = {
   sm: 1,
   md: 2,
-  lg: 3,
+  lg: 2,
   xl: 3,
   '2xl': 3,
 } as const
 
-export const useCarouselHookProps: UseCarouselHookProps = (initialCarouselPosition, items, slideOffset) => {
+export const useCarouselHookProps: UseCarouselHookProps = (initialCarouselPosition, items, slideOffsets) => {
   const { mediaBreakpoint } = useMediaBreakpoint()
   const containerRef = useRef<HTMLDivElement>(null)
   const [position, setPosition] = useState<number>(initialCarouselPosition)
@@ -46,8 +46,13 @@ export const useCarouselHookProps: UseCarouselHookProps = (initialCarouselPositi
 
   const motionX = useMotionValue<number>(0)
 
+  const slideOffset = useMemo(
+    () => slideOffsets[mediaBreakpoint as keyof typeof slideOffsets] || slideOffsets.lg,
+    [mediaBreakpoint, slideOffsets],
+  )
+
   const itemsPerSlide = useMemo(
-    () => CAROUSEL_BREAKPOINTS[mediaBreakpoint as keyof typeof CAROUSEL_BREAKPOINTS] || CAROUSEL_BREAKPOINTS.lg,
+    () => CAROUSEL_BREAKPOINTS[mediaBreakpoint as keyof typeof CAROUSEL_BREAKPOINTS] || CAROUSEL_BREAKPOINTS.sm,
     [mediaBreakpoint],
   )
 
@@ -88,8 +93,10 @@ export const useCarouselHookProps: UseCarouselHookProps = (initialCarouselPositi
 
   useEffect(() => {
     if (containerRef.current) {
-      setSlideWidth(containerRef.current.getBoundingClientRect().width + slideOffset)
+      if (mediaBreakpoint === 'sm' || mediaBreakpoint === 'md') setSlideWidth(containerRef.current.getBoundingClientRect().width)
+      else setSlideWidth(containerRef.current.getBoundingClientRect().width + slideOffset)
     }
+    setSlide(0)
   }, [slideOffset, mediaBreakpoint])
 
   return {

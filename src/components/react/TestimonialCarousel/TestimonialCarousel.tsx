@@ -5,7 +5,7 @@ import { animationSwipePower } from 'src/utility'
 
 import { Testimonial } from 'src/components/react'
 
-import { INITIAL_CAROUSEL_POSITION, SLIDER_GAP_OFFSET, SWIPE_CONFIDENCE_THRESHOLD } from './TestimonialCarousel.consts'
+import { INITIAL_CAROUSEL_POSITION, SLIDER_GAP_OFFSETS, SWIPE_CONFIDENCE_THRESHOLD } from './TestimonialCarousel.consts'
 import './TestimonialCarousel.css'
 import { CarouselDirection, type TestimonialCarouselProps } from './TestimonialCarousel.interface'
 import { useCarouselHookProps } from './TestimonialCarousel.utility'
@@ -14,12 +14,12 @@ const TestimonialCarousel: FC<TestimonialCarouselProps> = ({ testimonials }) => 
   const { containerRef, carouselWidth, position, x, paginate, pagination, setSlide, currentSlide } = useCarouselHookProps(
     INITIAL_CAROUSEL_POSITION,
     testimonials.length,
-    SLIDER_GAP_OFFSET,
+    SLIDER_GAP_OFFSETS,
   )
 
   return (
     <div className="flex flex-col items-center">
-      <div ref={containerRef} className="flex w-full max-w-7xl flex-col overflow-hidden">
+      <div ref={containerRef} className="testimonial-container">
         <motion.div
           style={{ x, width: carouselWidth }}
           animate={{ x: position }}
