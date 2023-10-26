@@ -3,14 +3,14 @@ import { SectionContainer } from 'src/components/react'
 ---
 
 <SectionContainer
-  className="bg-slate-900 text-zinc-100 lg:pt-10"
+  className="bg-slate-900 px-5 text-zinc-100 lg:pt-10 xl:px-10"
   containerClass="flex flex-col lg:flex-row items-center justify-center lg:items-start lg:justify-between"
 >
-  <div class="hidden max-w-lg flex-col lg:flex">
+  <div class="hidden max-w-lg flex-col self-end lg:flex">
     <img src="./welcome_about_image.png" alt="Hero Section Image" class="h-auto w-full" />
   </div>
-  <div class="flex flex-col items-center justify-center py-20 md:max-w-xl lg:items-start lg:py-0">
-    <h2 class="mb-5 px-10 text-center text-base italic md:mb-10 md:text-3xl lg:text-left">
+  <div class="flex flex-col items-center justify-center py-20 md:max-w-xl lg:items-start xl:py-0">
+    <h2 class="mb-5 px-10 text-center text-base italic md:mb-10 md:text-xl lg:text-left lg:text-2xl xl:text-3xl">
       “Welcome! I am happy to see you here. We will provide you with everything you need to succeed.”
     </h2>
     <div class="flex flex-col items-center justify-between self-stretch lg:flex-row">
@@ -19,10 +19,10 @@ import { SectionContainer } from 'src/components/react'
         <h4 class="font-darker-grotesque text-xl font-medium">Lorem ipsum</h4>
       </div>
       <div class="flex flex-row">
-        <div class="flex">
+        <div class="flex lg:max-h-[108px] lg:max-w-[108px] xl:max-h-none xl:max-w-none">
           <img src="./founding_member_badge.png" alt="Founding Member - Akos Gerold Certificate" class="h-auto w-full" />
         </div>
-        <div class="ml-5 flex">
+        <div class="ml-5 flex lg:max-h-[108px] lg:max-w-[108px] xl:max-h-none xl:max-w-none">
           <img
             src="./ethical_influence_practitioner.png"
             alt="Ethical Influence Practitioner - Akos Gerold Certificate"

@@ -11,7 +11,7 @@ import { CONTACT_EMAIL } from 'src/config'
     <img src="./hero_section_image.png" alt="Hero Section Image" class="h-full w-full object-cover object-[80%] md:h-auto" />
   </div>
   <div class="absolute z-20 h-full w-full pb-40 md:pb-0">
-    <div class="container mx-auto h-full">
+    <div class="container mx-auto h-full px-5 md:px-10">
       <div
         class="flex h-full w-full flex-col items-center justify-end sm:max-w-sm md:max-w-md md:items-start md:justify-center lg:max-w-2xl"
       >
@@ -22,12 +22,12 @@ import { CONTACT_EMAIL } from 'src/config'
           We have turned the science into training & consultancy, so you can sell, convert and grow like Apple, Amazon and Google
         </h4>
         <a
-          href=`mailto:${CONTACT_EMAIL}`
+          href={`mailto:${CONTACT_EMAIL}`}
           class="mb-5 rounded bg-amber-400 p-4 font-poppins font-bold text-stone-950 decoration-2 underline-offset-2 shadow transition-all duration-300 ease-in-out hover:underline hover:underline-offset-4 lg:mb-10"
           >Book a free call</a
         >
         <a
-          href=`mailto:${CONTACT_EMAIL}`
+          href={`mailto:${CONTACT_EMAIL}`}
           class="text-xs font-semibold underline transition-colors duration-300 ease-in-out hover:decoration-amber-400 md:text-lg"
           >Find out about our services</a
         >

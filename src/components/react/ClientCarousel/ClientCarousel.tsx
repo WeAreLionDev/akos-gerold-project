@@ -17,7 +17,7 @@ const ClientCarousel: FC<ClientCarouselProps> = ({ clients }) => {
   return (
     <div ref={containerRef} className="flex w-full max-w-sm flex-col xl:max-w-7xl">
       <motion.div
-        className="client-section self-center"
+        className="client-section cursor-move self-center"
         drag="x"
         animate={animationControls}
         dragConstraints={containerRef}
@@ -25,8 +25,17 @@ const ClientCarousel: FC<ClientCarouselProps> = ({ clients }) => {
         onDragEnd={onReset}
       >
         {clients.map(({ id, logo }) => (
-          <div key={id} className="flex w-32 flex-col">
-            <img src={logo} alt={id} className="w-ful block h-auto object-cover" />
+          <div key={id} className="flex flex-col items-center justify-center">
+            <motion.div
+              whileTap={{ scale: 1.5 }}
+              whileHover={{
+                scale: 1.5,
+                transition: { duration: 0.5, easings: 'easeInOut', damping: 0.5, stiffness: 200 },
+              }}
+              className="flex w-20 cursor-pointer flex-col"
+            >
+              <img src={logo} alt={id} className="block h-auto w-full object-cover" />
+            </motion.div>
           </div>
         ))}
       </motion.div>

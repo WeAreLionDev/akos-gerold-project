@@ -5,7 +5,7 @@
   },
   {
     "id": "acterience",
-    "logo": "clients/acterience.svg"
+    "logo": "clients/acterience.webp"
   },
   {
     "id": "apex-brasil",
@@ -21,19 +21,23 @@
   },
   {
     "id": "cade",
-    "logo": "clients/cade.png"
+    "logo": "clients/cade.webp"
   },
   {
     "id": "castelo-forte",
-    "logo": "clients/castelo-forte.png"
+    "logo": "clients/castelo-forte.webp"
   },
   {
     "id": "ccbill",
     "logo": "clients/ccbill.svg"
   },
   {
+    "id": "gartner",
+    "logo": "clients/gartner.svg"
+  },
+  {
     "id": "havas",
-    "logo": "clients/havas.svg"
+    "logo": "clients/havas.webp"
   },
   {
     "id": "kraftheinz",
@@ -45,7 +49,7 @@
   },
   {
     "id": "levi9",
-    "logo": "clients/levi9.png"
+    "logo": "clients/levi9.webp"
   },
   {
     "id": "man",
@@ -53,11 +57,11 @@
   },
   {
     "id": "roland-berger",
-    "logo": "clients/roland-berger.png"
+    "logo": "clients/roland-berger.webp"
   },
   {
     "id": "toastmasters",
-    "logo": "clients/toastmasters.png"
+    "logo": "clients/toastmasters.webp"
   },
   {
     "id": "unesco",
@@ -65,14 +69,14 @@
   },
   {
     "id": "we",
-    "logo": "we.png"
+    "logo": "clients/we.webp"
   },
   {
-    "id": "wunderman-thopson",
-    "logo": "wunderman-thopson.svg"
+    "id": "wunderman-thompson",
+    "logo": "clients/wunderman-thompson.svg"
   },
   {
-    "id": "ziepuls",
-    "logo": "ziepuls.png"
+    "id": "zielpuls",
+    "logo": "clients/zielpuls.webp"
   }
 ]
