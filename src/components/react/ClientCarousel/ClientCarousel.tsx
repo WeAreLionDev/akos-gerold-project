@@ -15,7 +15,7 @@ const ClientCarousel: FC<ClientCarouselProps> = ({ clients }) => {
   }
 
   return (
-    <div ref={containerRef} className="flex w-full max-w-sm flex-col xl:max-w-7xl">
+    <div ref={containerRef} className="flex w-full max-w-screen flex-col xl:max-w-7xl">
       <motion.div
         className="client-section cursor-move self-center"
         drag="x"

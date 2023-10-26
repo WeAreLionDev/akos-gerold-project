@@ -6,7 +6,9 @@ const config = {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
         raleway: ['Raleway', 'sans-serif'],
-        'darker-grotesque': ['Darker Grotesque', 'sans-serif'],
+      },
+      maxWidth: {
+        screen: '100vw',
       },
     },
   },
