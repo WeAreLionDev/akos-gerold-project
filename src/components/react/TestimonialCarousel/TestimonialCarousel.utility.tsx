@@ -77,7 +77,7 @@ export const useCarouselHookProps: UseCarouselHookProps = (initialCarouselPositi
         }
       }
     },
-    [initialCarouselPosition, maxSlides, currentSlide],
+    [initialCarouselPosition, maxSlides, currentSlide, setSlide, setPosition],
   )
 
   useEffect(() => {
@@ -85,7 +85,7 @@ export const useCarouselHookProps: UseCarouselHookProps = (initialCarouselPositi
     else {
       setPosition(currentSlide * slideWidth * -1)
     }
-  }, [initialCarouselPosition, currentSlide, slideWidth])
+  }, [initialCarouselPosition, currentSlide, slideWidth, setPosition])
 
   useEffect(() => {
     motionX.set(position)
@@ -97,7 +97,7 @@ export const useCarouselHookProps: UseCarouselHookProps = (initialCarouselPositi
       else setSlideWidth(containerRef.current.getBoundingClientRect().width + slideOffset)
     }
     setSlide(0)
-  }, [slideOffset, mediaBreakpoint])
+  }, [slideOffset, mediaBreakpoint, setSlide, setSlideWidth])
 
   return {
     containerRef,
