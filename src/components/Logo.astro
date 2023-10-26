@@ -6,4 +6,6 @@ type Props = HTMLAttributes<'a'>
 const { class: classNames, ...props } = Astro.props
 ---
 
-<a {...props} class:list={['font-bold', classNames]} href="/">Logo</a>
+<a {...props} class:list={[classNames]} href="/">
+  <img class="h-auto w-full" src="/logo.webp" alt="Akos Gerold - Logo" />
+</a>

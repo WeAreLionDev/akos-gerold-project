@@ -20,7 +20,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ children }) => {
           exit="close"
           transition={{ y: { type: 'spring', stiffness: 300, damping: 30 } }}
           variants={MOBILE_MENU_ANIMATION}
-          className="max-w-screen fixed bottom-0 left-0 right-0 z-30 flex max-h-screen flex-col bg-white shadow-md shadow-black md:hidden"
+          className="max-w-screen fixed bottom-0 left-0 right-0 z-30 flex max-h-screen flex-col bg-slate-900 shadow-md shadow-black xl:hidden"
           onClick={handleToggleMenuState}
         >
           {children}

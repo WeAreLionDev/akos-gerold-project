@@ -17,7 +17,7 @@ const MenuButton: FC<MenuButtonProps> = ({ className, ...props }) => {
   const handleToggleMenuState = () => isMenuOpen.set(!menuState)
   const menuIcon = menuState ? faXmarkLarge : faBars
   return (
-    <button {...props} className={classNames('flex md:hidden', className)} onClick={handleToggleMenuState}>
+    <button {...props} className={classNames('flex', className)} onClick={handleToggleMenuState}>
       <IconContainer className="group px-2">
         <FontAwesomeIcon
           icon={menuIcon}

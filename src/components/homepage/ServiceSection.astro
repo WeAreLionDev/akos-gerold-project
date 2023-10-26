@@ -1,0 +1,61 @@
+---
+import classNames from 'classnames'
+import { SectionContainer, TestimonialBlock } from 'src/components/react'
+import { CONTACT_EMAIL } from 'src/config'
+import type { ServiceType } from 'src/types'
+
+type Props = ServiceType
+
+const { title, body, image, testimonial, orientation, variant } = Astro.props
+
+const variantClasses = {
+  dark: 'bg-slate-900 text-zinc-100',
+  light: 'bg-zinc-100 text-slate-900',
+}
+
+const variantTestimonialClasses = {
+  dark: 'border-zinc-100',
+  light: 'border-slate-900',
+}
+
+const orientationClasses = {
+  left: 'lg:flex-row',
+  right: 'lg:flex-row-reverse',
+}
+const orientationTestimonalClasses = {
+  left: 'self-start',
+  right: 'self-end',
+}
+
+const imageVariationClasses = {
+  left: 'mr-0 md:mr-5',
+  right: 'ml-0 md:ml-5',
+}
+
+const bodyVariationClasses = {
+  left: 'ml-0 md:ml-5',
+  right: 'mr-0 md:mr-5',
+}
+---
+
+<SectionContainer className={classNames(variantClasses[variant], 'px-5 py-20 md:px-10 md:py-40')} containerClass="flex flex-col">
+  <div class={classNames(orientationClasses[orientation], 'flex flex-col items-center md:mb-10 md:items-start md:justify-between')}>
+    <div class={classNames(imageVariationClasses[orientation], 'mb-10 flex max-w-sm md:max-w-xl lg:mb-0')}>
+      <img src={image} alt={title} class="h-auto w-full" />
+    </div>
+    <div class={classNames(bodyVariationClasses[orientation], 'flex max-w-sm flex-col items-start md:max-w-lg xl:max-w-xl 2xl:max-w-2xl')}>
+      <h2 class="mb-10 font-poppins text-4xl font-bold">{title}</h2>
+      <p class="mb-10 text-lg lg:text-xl xl:text-2xl">{body}</p>
+      <TestimonialBlock {...testimonial} className={classNames(variantTestimonialClasses[variant], 'mb-10 flex md:hidden')} />
+      <a
+        href={`mailto:${CONTACT_EMAIL}`}
+        class="rounded bg-amber-400 p-4 font-poppins font-bold text-stone-950 decoration-2 underline-offset-2 shadow transition-all duration-300 ease-in-out hover:underline hover:underline-offset-4"
+        >Contact me</a
+      >
+    </div>
+  </div>
+  <TestimonialBlock
+    {...testimonial}
+    className={classNames(variantTestimonialClasses[variant], orientationTestimonalClasses[orientation], 'hidden md:flex')}
+  />
+</SectionContainer>

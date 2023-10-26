@@ -1,19 +1,62 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
 import classNames from 'classnames'
-import { FOOTER_LINKS } from 'src/config'
+import { CONTACT_EMAIL, FOOTER_LINKS } from 'src/config'
 import FooterLink from 'src/components/FooterLink.astro'
+import Logo from 'src/components/Logo.astro'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLinkedinIn, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
 type Props = HTMLAttributes<'footer'>
 const { class: className } = Astro.props
+
+const iconClasses = 'hover:text-amber-400 transition-colors duration-300 ease-in-out'
 ---
 
-<footer class={classNames('w-full', className)}>
-  <div
-    class="container mx-auto flex w-full flex-col items-center justify-between gap-8 border-t px-5 py-14 md:flex-row md:gap-0 md:px-10 lg:px-12"
-  >
-    <ul class="flex items-center gap-2 md:gap-8 lg:gap-28">
-      {FOOTER_LINKS.map((link) => <FooterLink {...link} />)}
-    </ul>
+<footer class={classNames('relative w-full bg-slate-900 py-20 text-zinc-100', className)}>
+  <div class="container mx-auto flex flex-col px-5 md:px-10">
+    <div class="mb-20 flex flex-col lg:flex-row">
+      <div class="flex flex-col items-center lg:mr-auto">
+        <Logo class="max-w-xs" />
+        <ul class="flex list-none items-center justify-center gap-5 py-10">
+          <li>
+            <a href="#youtube" class={iconClasses}>
+              <FontAwesomeIcon className="block h-10 w-10" icon={faYoutube} />
+            </a>
+          </li><li>
+            <a href="#linkedin" class={iconClasses}>
+              <FontAwesomeIcon className="block h-10 w-10" icon={faLinkedinIn} />
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="mb-20 flex flex-col lg:mb-0 lg:mr-20">
+        <h4 class="mb-5 text-2xl font-bold">Pages</h4>
+        <ul class="flex list-none flex-col">
+          {FOOTER_LINKS.map((link) => <FooterLink {...link} />)}
+        </ul>
+      </div>
+      <div class="flex flex-col">
+        <ul class="flex list-none flex-col gap-5">
+          <li class="flex flex-col">
+            <span class="text-xl font-bold">E-mail</span>
+            <a href={`mailto:${CONTACT_EMAIL}`} class="block py-2 text-zinc-100 hover:text-amber-400">contact@akos-gerold.com</a>
+          </li>
+          <li class="flex flex-col">
+            <span class="text-xl font-bold">Location</span>
+            <span>Brasilia, Brazil</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex flex-col items-center justify-center">
+      <a
+        href="https://wearelion.dev"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block py-4 underline-offset-8 transition-all delay-75 ease-out hover:text-orange-400 hover:underline"
+        >Developed by 🦁 Lion development</a
+      >
+    </div>
   </div>
 </footer>

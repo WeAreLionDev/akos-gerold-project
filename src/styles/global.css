@@ -8,7 +8,7 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   overflow-x: hidden;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  @apply bg-stone-100;
 }
 
 .lock-scroll {
@@ -19,6 +19,7 @@ body {
 
 html {
   font-size: var(--font-size);
+  font-family: 'Raleway', sans-serif;
 }
 
 body {
@@ -41,4 +42,22 @@ body {
 
 .wrapper > footer {
   grid-area: footer;
+}
+
+.work-with-us-section {
+  position: relative;
+}
+
+.work-with-us-section::before {
+  @apply opacity-0 md:opacity-75 lg:opacity-100;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 80%;
+  height: 80%;
+  background-image: url('./work_with_us_section.png');
+  background-position: right bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  content: '';
 }

@@ -1,0 +1,11 @@
+.client-section {
+  @apply grid gap-y-10;
+  grid-template-columns: repeat(10, 6rem);
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(10, 8rem);
+  }
+  @media screen and (min-width: 1440px) {
+    grid-template-columns: repeat(10, 10rem);
+  }
+  grid-auto-rows: 1fr;
+}

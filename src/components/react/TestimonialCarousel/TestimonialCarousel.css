@@ -1,0 +1,15 @@
+.testimonial-container {
+  @apply flex w-screen flex-col overflow-hidden sm:w-full lg:max-w-3xl xl:max-w-7xl;
+}
+
+.testimonial-carousel {
+  @apply grid py-5 md:gap-x-5 md:px-[10px] xl:gap-x-20 xl:px-10;
+  grid-template-columns: repeat(auto-fill, min(100vw, 40rem));
+  grid-auto-rows: minmax(20rem, 1fr);
+  min-height: 22.5rem;
+  margin-left: -1px; /* shadow visibility fix */
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(22.5rem, 1fr));
+    grid-auto-rows: minmax(22.5rem, 1fr);
+  }
+}

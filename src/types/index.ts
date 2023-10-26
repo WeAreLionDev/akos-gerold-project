@@ -1,3 +1,6 @@
 export type * from './ConvertSanityDocumentToTypeFunction'
 export type * from './BaseSanityDocument'
 export type * from './NavigationLinkType'
+export type * from './ServiceType'
+export type * from './TestimonialType'
+export type * from './ClientType'
