@@ -25,18 +25,19 @@ const ClientCarousel: FC<ClientCarouselProps> = ({ clients }) => {
         onDragEnd={onReset}
       >
         {clients.map(({ id, logo }) => (
-          <div key={id} className="flex flex-col items-center justify-center">
-            <motion.div
-              whileTap={{ scale: 1.5 }}
-              whileHover={{
-                scale: 1.5,
-                transition: { duration: 0.5, easings: 'easeInOut', damping: 0.5, stiffness: 200 },
-              }}
-              className="flex w-20 cursor-pointer flex-col"
-            >
+          <motion.div
+            whileTap={{ scale: 1.5 }}
+            whileHover={{
+              scale: 1.5,
+              transition: { duration: 0.5, easings: 'easeInOut', damping: 0.25, stiffness: 500 },
+            }}
+            key={id}
+            className="flex flex-col items-center justify-center"
+          >
+            <div className="flex w-20 cursor-pointer flex-col">
               <img src={logo} alt={id} className="block h-auto w-full object-cover" />
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         ))}
       </motion.div>
       <div className="client-scrollbar">
