@@ -55,7 +55,7 @@ body {
   bottom: 0;
   width: 80%;
   height: 80%;
-  background-image: url('./work_with_us_section.webp');
+  background-image: url('/homepage/work_with_us_section.webp');
   background-position: right bottom;
   background-size: contain;
   background-repeat: no-repeat;
