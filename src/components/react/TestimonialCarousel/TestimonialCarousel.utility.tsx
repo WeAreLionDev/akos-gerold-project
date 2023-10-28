@@ -2,6 +2,8 @@ import { MotionValue, useMotionValue } from 'framer-motion'
 import { type Dispatch, type RefObject, type SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useMediaBreakpoint } from 'src/utility'
 
+import type { MediaBreakpoints } from 'src/types'
+
 import { CarouselDirection } from 'src/components/react/TestimonialCarousel/TestimonialCarousel.interface'
 
 interface UseCarouselHookProps {
@@ -21,13 +23,7 @@ interface UseCarouselHookProps {
   }
 }
 
-export type CarouselBreakpoints = {
-  sm: number
-  md: number
-  lg: number
-  xl: number
-  '2xl': number
-}
+export type CarouselBreakpoints = MediaBreakpoints
 
 const CAROUSEL_BREAKPOINTS: CarouselBreakpoints = {
   sm: 1,
@@ -37,7 +33,7 @@ const CAROUSEL_BREAKPOINTS: CarouselBreakpoints = {
   '2xl': 3,
 } as const
 
-export const useCarouselHookProps: UseCarouselHookProps = (initialCarouselPosition, items, slideOffsets) => {
+export const useCarouselHookProps: UseCarouselHookProps = (initialCarouselPosition, items) => {
   const { mediaBreakpoint } = useMediaBreakpoint()
   const containerRef = useRef<HTMLDivElement>(null)
   const [position, setPosition] = useState<number>(initialCarouselPosition)
@@ -45,11 +41,6 @@ export const useCarouselHookProps: UseCarouselHookProps = (initialCarouselPositi
   const [currentSlide, setSlide] = useState<number>(0)
 
   const motionX = useMotionValue<number>(0)
-
-  const slideOffset = useMemo(
-    () => slideOffsets[mediaBreakpoint as keyof typeof slideOffsets] || slideOffsets.lg,
-    [mediaBreakpoint, slideOffsets],
-  )
 
   const itemsPerSlide = useMemo(
     () => CAROUSEL_BREAKPOINTS[mediaBreakpoint as keyof typeof CAROUSEL_BREAKPOINTS] || CAROUSEL_BREAKPOINTS.sm,
@@ -93,11 +84,10 @@ export const useCarouselHookProps: UseCarouselHookProps = (initialCarouselPositi
 
   useEffect(() => {
     if (containerRef.current) {
-      if (mediaBreakpoint === 'sm' || mediaBreakpoint === 'md') setSlideWidth(containerRef.current.getBoundingClientRect().width)
-      else setSlideWidth(containerRef.current.getBoundingClientRect().width + slideOffset)
+      setSlideWidth(containerRef.current.getBoundingClientRect().width)
     }
     setSlide(0)
-  }, [slideOffset, mediaBreakpoint, setSlide, setSlideWidth])
+  }, [mediaBreakpoint, setSlide, setSlideWidth])
 
   return {
     containerRef,

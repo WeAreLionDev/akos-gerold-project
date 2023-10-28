@@ -19,7 +19,7 @@ const TestimonialCarousel: FC<TestimonialCarouselProps> = ({ testimonials }) => 
 
   return (
     <div className="flex flex-col items-center">
-      <div ref={containerRef} className="testimonial-container">
+      <div ref={containerRef} className="testimonial-carousel-container">
         <motion.div
           style={{ x, width: carouselWidth }}
           animate={{ x: position }}

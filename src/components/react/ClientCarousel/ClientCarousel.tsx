@@ -22,8 +22,9 @@ const ClientCarousel: FC<ClientCarouselProps> = ({ clients }) => {
 
   useEffect(() => {
     const itemsWidth = itemsRef.current?.getBoundingClientRect().width
+    const itemsOffset = mediaBreakpoint === 'md' || mediaBreakpoint === 'sm' ? 80 : 0
     if (itemsWidth) {
-      setCarouselWidth(itemsWidth * 11)
+      setCarouselWidth(itemsWidth * 10 + itemsOffset)
     }
     onReset()
   }, [mediaBreakpoint, onReset])
@@ -39,22 +40,41 @@ const ClientCarousel: FC<ClientCarouselProps> = ({ clients }) => {
         onDragEnd={onReset}
         style={{ width: carouselWidth }}
       >
-        {clients.map(({ id, logo }) => (
-          <motion.div
-            whileTap={{ scale: 1.5 }}
-            whileHover={{
-              scale: 1.5,
-              transition: { duration: 0.5, easings: 'easeInOut', damping: 0.25, stiffness: 500 },
-            }}
-            key={id}
-            className="flex flex-col items-center justify-center"
-          >
-            <div className="flex w-20 cursor-pointer flex-col">
-              <img src={logo} alt={id} className="block h-auto w-full object-cover" />
-            </div>
-          </motion.div>
-        ))}
-        <div ref={itemsRef}></div>
+        {clients.map(({ id, logo }, index) => {
+          if (index === 0) {
+            return (
+              <motion.div
+                ref={itemsRef}
+                whileTap={{ scale: 1.5 }}
+                whileHover={{
+                  scale: 1.5,
+                  transition: { duration: 0.5, easings: 'easeInOut', damping: 0.25, stiffness: 500 },
+                }}
+                key={id}
+                className="flex flex-col items-center justify-center"
+              >
+                <div className="flex w-20 cursor-pointer flex-col">
+                  <img src={logo} alt={id} className="block h-auto w-full object-cover" />
+                </div>
+              </motion.div>
+            )
+          }
+          return (
+            <motion.div
+              whileTap={{ scale: 1.5 }}
+              whileHover={{
+                scale: 1.5,
+                transition: { duration: 0.5, easings: 'easeInOut', damping: 0.25, stiffness: 500 },
+              }}
+              key={id}
+              className="flex flex-col items-center justify-center"
+            >
+              <div className="flex w-20 cursor-pointer flex-col">
+                <img src={logo} alt={id} className="block h-auto w-full object-cover" />
+              </div>
+            </motion.div>
+          )
+        })}
       </motion.div>
       <div className="client-scrollbar">
         <motion.div />
