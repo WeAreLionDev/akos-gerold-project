@@ -72,13 +72,9 @@
     <main class="relative flex flex-col justify-center bg-slate-900 text-zinc-100 sm:min-h-0 xl:min-h-screen">
       <div class="z-10 h-full w-full">
         <picture>
-          <source media="(max-width: 640px)" srcset="images/hero_image_mob_x1.webp 1x, images/hero_image_mob_x2.webp 2x" />
-          <img
-            src="images/hero_image_x1.webp"
-            srcset="images/hero_image_x1.webp 1x, images/hero_image_x2.webp 2x"
-            alt="Hero section image"
-            class="h-full w-full md:h-auto"
-          />
+          <source media="(max-width: 767px)" srcset="images//hero_image_mob_x1.webp 320w, images//hero_image_mob_x2.webp 800w" />
+          <source media="(min-width: 768px)" srcset="images//hero_image_x1.webp 1200w, images//hero_image_x2.webp 2400w" />
+          <img src="images//hero_image_mob_x1.webp" alt="Akos Gerold Presenting" class="h-full w-full md:h-auto" />
         </picture>
       </div>
       <div class="absolute z-20 h-full w-full pb-32 sm:pb-0">
