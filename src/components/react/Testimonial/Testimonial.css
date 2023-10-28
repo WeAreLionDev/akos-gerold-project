@@ -1,3 +1,7 @@
+.testimonial-container {
+  @apply flex flex-col items-center justify-self-center p-4;
+}
+
 .testimonial {
   @apply flex flex-col items-center justify-self-center bg-white p-10 text-stone-950 shadow;
   max-width: 22.5rem;

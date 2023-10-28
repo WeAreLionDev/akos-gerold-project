@@ -1,5 +1,5 @@
 .client-section {
-  @apply grid gap-y-10;
+  @apply grid cursor-move gap-y-10 px-10 lg:self-center;
   grid-template-columns: repeat(10, 6rem);
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(10, 8rem);
