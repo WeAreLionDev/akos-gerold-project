@@ -1,28 +1,43 @@
 import { motion, useAnimationControls } from 'framer-motion'
-import { type FC, useRef } from 'react'
+import { type FC, useCallback, useEffect, useRef, useState } from 'react'
+import { useMediaBreakpoint } from 'src/utility'
 
 import './ClientCarousel.css'
 import type { ClientCarouselProps } from './ClientCarousel.interface'
 
 const ClientCarousel: FC<ClientCarouselProps> = ({ clients }) => {
   const containerRef = useRef<HTMLDivElement>(null)
+  const itemsRef = useRef<HTMLDivElement>(null)
   const animationControls = useAnimationControls()
-  const onReset = () => {
+  const { mediaBreakpoint } = useMediaBreakpoint()
+  const [carouselWidth, setCarouselWidth] = useState<number>(0)
+
+  const onReset = useCallback(() => {
+    if (mediaBreakpoint === 'sm' || mediaBreakpoint === 'md') return
     animationControls.start({
       x: 0,
       y: 0,
     })
-  }
+  }, [animationControls, mediaBreakpoint])
+
+  useEffect(() => {
+    const itemsWidth = itemsRef.current?.getBoundingClientRect().width
+    if (itemsWidth) {
+      setCarouselWidth(itemsWidth * 11)
+    }
+    onReset()
+  }, [mediaBreakpoint, onReset])
 
   return (
     <div ref={containerRef} className="flex w-full max-w-screen flex-col xl:max-w-7xl">
       <motion.div
-        className="client-section cursor-move self-center"
+        className="client-section"
         drag="x"
         animate={animationControls}
         dragConstraints={containerRef}
         dragElastic={1}
         onDragEnd={onReset}
+        style={{ width: carouselWidth }}
       >
         {clients.map(({ id, logo }) => (
           <motion.div
@@ -39,6 +54,7 @@ const ClientCarousel: FC<ClientCarouselProps> = ({ clients }) => {
             </div>
           </motion.div>
         ))}
+        <div ref={itemsRef}></div>
       </motion.div>
       <div className="client-scrollbar">
         <motion.div />
