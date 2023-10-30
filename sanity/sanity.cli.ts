@@ -21,6 +21,8 @@ export default defineCliConfig({
         utility: path.resolve(__dirname, "./utility"),
         schemas: path.resolve(__dirname, "./schemas"),
         config: path.resolve(__dirname, "./config"),
+        types: path.resolve(__dirname, "./types"),
+        components: path.resolve(__dirname, "./components"),
       },
     },
   },

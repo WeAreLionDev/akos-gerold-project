@@ -1,14 +1,14 @@
 import { defineField, defineType } from "sanity";
 import { adaptiveImageValidation } from "utility";
 import {
-  HERO_SECTION_DESKTOP_IMAGE_ASPECT_RATION,
-  HERO_SECTION_MOBILE_IMAGE_ASPECT_RATION,
-} from "./heroSection.consts";
+  HERO_SECTION_DESKTOP_IMAGE_ASPECT_RATIO,
+  HERO_SECTION_MOBILE_IMAGE_ASPECT_RATIO,
+} from "config";
 
 export default defineType({
-  name: "hero",
+  name: "heroSection",
   type: "object",
-  title: "Hero",
+  title: "Hero Section",
   fields: [
     defineField({
       name: "heading",
@@ -64,7 +64,7 @@ export default defineType({
       description:
         "Image for the hero section, for mobile. Should respect aspect ratio of 9:16.",
       validation: (rule) =>
-        adaptiveImageValidation(rule, HERO_SECTION_MOBILE_IMAGE_ASPECT_RATION),
+        adaptiveImageValidation(rule, HERO_SECTION_MOBILE_IMAGE_ASPECT_RATIO),
       fields: [
         defineField({
           name: "alt",
@@ -81,7 +81,7 @@ export default defineType({
       description:
         "Image for the hero section, for desktop. Should respect aspect ratio of 16:6.",
       validation: (rule) =>
-        adaptiveImageValidation(rule, HERO_SECTION_DESKTOP_IMAGE_ASPECT_RATION),
+        adaptiveImageValidation(rule, HERO_SECTION_DESKTOP_IMAGE_ASPECT_RATIO),
       fields: [
         defineField({
           name: "alt",

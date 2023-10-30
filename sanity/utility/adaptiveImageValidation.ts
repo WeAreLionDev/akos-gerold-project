@@ -3,8 +3,7 @@ import { getExtension, getImageDimensions } from "@sanity/asset-utils";
 import { SanityAsset } from "@sanity/image-url/lib/types/types";
 import { roundDecimalNumber } from "./roundDecimalNumber";
 import { isWithinTolerance } from "./isWithinTolerance";
-
-const ACCEPTED_FILE_TYPES = ["jpg", "jpeg", "png", "webp"];
+import { ACCEPTED_IMAGE_FILE_TYPES } from "config";
 
 const ASPECT_RATIO_TOLERANCE = 0.001;
 
@@ -17,8 +16,8 @@ export const adaptiveImageValidation = (
 
     const fileType = getExtension(value.asset._ref);
 
-    if (!ACCEPTED_FILE_TYPES.includes(fileType)) {
-      return `File type not supported. Please use ${ACCEPTED_FILE_TYPES.concat(
+    if (!ACCEPTED_IMAGE_FILE_TYPES.includes(fileType)) {
+      return `File type not supported. Please use ${ACCEPTED_IMAGE_FILE_TYPES.concat(
         ", ",
       )}`;
     }

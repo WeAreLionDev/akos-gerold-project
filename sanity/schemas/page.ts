@@ -20,8 +20,14 @@ export default defineType({
       title: "Page builder",
       of: [
         defineArrayMember({
-          name: "hero",
-          type: "hero",
+          name: "heroSection",
+          type: "heroSection",
+          title: "Hero Section",
+        }),
+        defineArrayMember({
+          name: "clientSection",
+          type: "clientSection",
+          title: "Client Section",
         }),
       ],
     }),
