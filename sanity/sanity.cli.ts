@@ -20,6 +20,7 @@ export default defineCliConfig({
       alias: {
         utility: path.resolve(__dirname, "./utility"),
         schemas: path.resolve(__dirname, "./schemas"),
+        config: path.resolve(__dirname, "./config"),
       },
     },
   },
