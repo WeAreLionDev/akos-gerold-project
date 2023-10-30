@@ -1,0 +1,25 @@
+---
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
+import type { HTMLAttributes } from 'astro/types'
+import { useGetImageUrl } from 'src/clients/sanity'
+
+type Props = HTMLAttributes<'img'> & { assets: { mobile: SanityImageSource; desktop: SanityImageSource }; containerClass?: string }
+
+const { class: className, containerClass, assets, ...props } = Astro.props
+
+const desktopFallback = useGetImageUrl(assets.desktop).format('png').url()
+
+const mobileLowFi = useGetImageUrl(assets.mobile).format('webp').url()
+const mobileHiFi = useGetImageUrl(assets.mobile).format('webp').url()
+
+const desktopLowFi = useGetImageUrl(assets.desktop).format('webp').url()
+const desktopHiFi = useGetImageUrl(assets.desktop).format('webp').url()
+---
+
+<div class:list={['h-full w-full', containerClass]}>
+  <picture>
+    <source media="(max-width: 767px)" type="image/webp" srcset=`${mobileLowFi} 320w, ${mobileHiFi} 800w` />
+    <source media="(min-width: 768px)" type="image/webp" srcset=`${desktopLowFi} 1200w, ${desktopHiFi} 2400w` />
+    <img {...props} src={desktopFallback} alt="Akos Gerold Presenting" class:list={['h-full w-full md:h-auto', className]} />
+  </picture>
+</div>

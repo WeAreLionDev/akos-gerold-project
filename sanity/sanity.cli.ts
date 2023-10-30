@@ -1,4 +1,5 @@
 import { defineCliConfig } from "sanity/cli";
+import path from "path";
 
 export default defineCliConfig({
   api: {
@@ -13,6 +14,12 @@ export default defineCliConfig({
     server: {
       watch: {
         usePolling: true, //needs to be enabled if WIN + WSL because of file systems
+      },
+    },
+    resolve: {
+      alias: {
+        utility: path.resolve(__dirname, "./utility"),
+        schemas: path.resolve(__dirname, "./schemas"),
       },
     },
   },

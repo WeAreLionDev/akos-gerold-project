@@ -10,6 +10,10 @@ const config = {
       maxWidth: {
         screen: '100vw',
       },
+      aspectRatio: {
+        hero: '16 / 6',
+        'hero-mobile': '9 / 16',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
