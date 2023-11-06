@@ -1,0 +1,77 @@
+import { SERVICE_SECTION_MAX_IMAGE_SIZE } from "config";
+import { defineField, defineType } from "sanity";
+import { maxImageSizeValidation } from "utility";
+
+export default defineType({
+  name: "serviceSection",
+  type: "object",
+  title: "Service Section",
+  fields: [
+    defineField({
+      title: "Use blue theme?",
+      name: "blueTheme",
+      type: "boolean",
+      initialValue: false,
+    }),
+    defineField({
+      name: "image",
+      type: "image",
+      description:
+        "Image for the service section. Max image size: 576x576 pixels.",
+      validation: (rule) =>
+        maxImageSizeValidation(rule, SERVICE_SECTION_MAX_IMAGE_SIZE),
+      fields: [
+        defineField({
+          name: "alt",
+          type: "string",
+          title: "Alternative text",
+          description:
+            "Important for SEO and accessiblity. Please add a description of the image.",
+        }),
+      ],
+    }),
+    defineField({
+      name: "title",
+      title: "Title",
+      description: "Title for the service section.",
+      type: "string",
+    }),
+    defineField({
+      name: "body",
+      title: "Body",
+      description: "Body for the service section.",
+      type: "blockContent",
+    }),
+    defineField({
+      name: "testimonial",
+      title: "Testimonial",
+      description: "Select testimonial to showcase in this section.",
+      type: "reference",
+      to: [{ type: "testimonial" }],
+    }),
+    defineField({
+      name: "tagline",
+      type: "string",
+      description: "Tagline for the service section. Text above the button.",
+      title: "Tagline",
+    }),
+    defineField({
+      name: "button",
+      type: "object",
+      description: "Link for the button in the hero section.",
+      title: "Button",
+      fields: [
+        { name: "text", type: "string", title: "Button Text" },
+        {
+          name: "url",
+          type: "url",
+          title: "Button URL",
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ["http", "https", "mailto", "tel"],
+            }),
+        },
+      ],
+    }),
+  ],
+});

@@ -3,7 +3,7 @@
 }
 
 .testimonial {
-  @apply flex flex-col items-center justify-self-center bg-white p-10 text-stone-950 shadow;
+  @apply flex flex-col items-center justify-self-center bg-white p-5 text-stone-950 shadow;
   max-width: 22.5rem;
   max-height: 22.5rem;
 }

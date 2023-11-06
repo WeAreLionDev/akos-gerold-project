@@ -10,7 +10,7 @@ Now you can do the following things:
 
 # Image notes
 
-Hero section is `16:6` on Desktop and `16:8` on Mobile.
+Hero section is `16:6` on Desktop and `9:16` on Mobile.
 
 Desktop:
 
