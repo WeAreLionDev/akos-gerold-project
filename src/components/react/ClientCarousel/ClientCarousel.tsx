@@ -12,6 +12,8 @@ const ClientCarousel: FC<ClientCarouselProps> = ({ clients }) => {
   const { mediaBreakpoint } = useMediaBreakpoint()
   const [carouselWidth, setCarouselWidth] = useState<number>(0)
 
+  const imgClasses = 'block h-auto w-full object-cover grayscale transition-all duration-300 ease-in-out hover:grayscale-0  delay-150'
+
   const onReset = useCallback(() => {
     if (mediaBreakpoint === 'sm' || mediaBreakpoint === 'md') return
     animationControls.start({
@@ -43,42 +45,22 @@ const ClientCarousel: FC<ClientCarouselProps> = ({ clients }) => {
         {clients.map(({ id, logo }, index) => {
           if (index === 0) {
             return (
-              <motion.div
-                ref={itemsRef}
-                whileTap={{ scale: 1.5 }}
-                whileHover={{
-                  scale: 1.5,
-                  transition: { duration: 0.5, easings: 'easeInOut', damping: 0.25, stiffness: 500 },
-                }}
-                key={id}
-                className="flex flex-col items-center justify-center"
-              >
+              <motion.div ref={itemsRef} key={id} className="flex flex-col items-center justify-center">
                 <div className="flex w-20 cursor-pointer flex-col">
-                  <img src={logo} alt={id} className="block h-auto w-full object-cover" />
+                  <img src={logo} alt={id} className={imgClasses} />
                 </div>
               </motion.div>
             )
           }
           return (
-            <motion.div
-              whileTap={{ scale: 1.5 }}
-              whileHover={{
-                scale: 1.5,
-                transition: { duration: 0.5, easings: 'easeInOut', damping: 0.25, stiffness: 500 },
-              }}
-              key={id}
-              className="flex flex-col items-center justify-center"
-            >
+            <motion.div key={id} className="flex flex-col items-center justify-center">
               <div className="flex w-20 cursor-pointer flex-col">
-                <img src={logo} alt={id} className="block h-auto w-full object-cover" />
+                <img src={logo} alt={id} className={imgClasses} />
               </div>
             </motion.div>
           )
         })}
       </motion.div>
-      <div className="client-scrollbar">
-        <motion.div />
-      </div>
     </div>
   )
 }
