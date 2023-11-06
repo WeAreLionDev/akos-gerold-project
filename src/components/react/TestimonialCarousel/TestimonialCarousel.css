@@ -7,7 +7,10 @@
   grid-template-columns: repeat(auto-fill, min(100vw, 40rem));
   grid-auto-rows: minmax(20rem, 1fr);
   min-height: 22.5rem;
-  @media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 768px) {
+  .testimonial-carousel {
     grid-template-columns: repeat(auto-fill, minmax(22.5rem, 1fr));
     grid-auto-rows: minmax(22.5rem, 1fr);
   }
