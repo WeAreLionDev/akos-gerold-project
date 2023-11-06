@@ -1,5 +1,6 @@
 ---
 import classNames from 'classnames'
+import ButtonLink from 'src/components/ButtonLink/ButtonLink.astro'
 import { SectionContainer, TestimonialBlock } from 'src/components/react'
 import { CONTACT_EMAIL } from 'src/config'
 import type { ServiceType } from 'src/types'
@@ -18,13 +19,14 @@ const variantTestimonialClasses = {
   light: 'border-slate-900',
 }
 
+const variantBodyClasses = {
+  dark: 'text-zinc-100',
+  light: 'text-slate-900',
+}
+
 const orientationClasses = {
   left: 'lg:flex-row',
   right: 'lg:flex-row-reverse',
-}
-const orientationTestimonalClasses = {
-  left: 'self-start',
-  right: 'self-end',
 }
 
 const imageVariationClasses = {
@@ -45,17 +47,12 @@ const bodyVariationClasses = {
     </div>
     <div class={classNames(bodyVariationClasses[orientation], 'flex max-w-sm flex-col items-start md:max-w-lg xl:max-w-xl 2xl:max-w-2xl')}>
       <h2 class="mb-10 font-poppins text-4xl font-bold">{title}</h2>
-      <p class="mb-10 text-lg lg:text-xl xl:text-2xl">{body}</p>
-      <TestimonialBlock {...testimonial} className={classNames(variantTestimonialClasses[variant], 'mb-10 flex md:hidden')} />
-      <a
-        href={`mailto:${CONTACT_EMAIL}`}
-        class="rounded bg-amber-400 p-4 font-poppins font-bold text-stone-950 decoration-2 underline-offset-2 shadow transition-all duration-300 ease-in-out hover:underline hover:underline-offset-4"
-        >Contact me</a
-      >
+      <div class={classNames(variantBodyClasses[variant], 'prose mb-10 text-lg lg:text-xl xl:text-2xl')}>
+        {body}
+      </div>
+      <TestimonialBlock {...testimonial} className={classNames(variantTestimonialClasses[variant], 'mb-10 flex')} />
+      <h4 class="mb-5 text-xs font-semibold sm:mb-10 md:mb-5 lg:mb-7 lg:text-lg xl:mb-10">Find out about our services</h4>
+      <ButtonLink variant={variant === 'dark' ? 'secondary' : 'primary'} href={CONTACT_EMAIL} class="">Contact me</ButtonLink>
     </div>
   </div>
-  <TestimonialBlock
-    {...testimonial}
-    className={classNames(variantTestimonialClasses[variant], orientationTestimonalClasses[orientation], 'hidden md:flex')}
-  />
 </SectionContainer>

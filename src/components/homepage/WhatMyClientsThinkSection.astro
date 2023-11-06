@@ -10,7 +10,7 @@ type Props = {
 const { testimonials } = Astro.props
 ---
 
-<SectionContainer className="bg-stone-100 py-10 text-stone-950 lg:py-20 xl:py-40" containerClass="flex flex-col">
+<SectionContainer id="testimonials" className="bg-stone-100 py-10 text-stone-950 lg:py-20 xl:py-40" containerClass="flex flex-col">
   <h2 class="mb-10 text-center font-poppins text-5xl font-bold md:mb-20">My clients</h2>
   <TestimonialCarousel client:only testimonials={testimonials} />
 </SectionContainer>

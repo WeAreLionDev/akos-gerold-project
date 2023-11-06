@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import './ButtonLink.css'
+
+type Props = HTMLAttributes<'a'> & { variant?: 'primary' | 'secondary' }
+
+const { href, class: className, variant = 'primary', ...props } = Astro.props
+---
+
+<a
+  class="rounded bg-amber-400 p-4 font-poppins font-bold text-stone-950 decoration-2 underline-offset-2 transition-all duration-300 ease-in-out hover:underline hover:underline-offset-4"
+  href={href}
+  class:list={[className, `button-link-${variant}`]}
+  {...props}
+>
+  <slot />
+</a>
