@@ -4,12 +4,14 @@ import { SanityAsset } from "@sanity/image-url/lib/types/types";
 import { roundDecimalNumber } from "./roundDecimalNumber";
 import { isWithinTolerance } from "./isWithinTolerance";
 import { ACCEPTED_IMAGE_FILE_TYPES } from "config";
+import { AspectRatiosType } from "types";
 
 const ASPECT_RATIO_TOLERANCE = 0.001;
 
 export const adaptiveImageValidation = (
   rule: ImageRule,
-  ratio: [number, number],
+  ratio: AspectRatiosType,
+  tolerance: number = ASPECT_RATIO_TOLERANCE,
 ) =>
   rule.custom((value?: SanityAsset) => {
     if (!value) return true;
@@ -30,7 +32,7 @@ export const adaptiveImageValidation = (
     const isAspectRatioValid = isWithinTolerance(
       validationImageRatio,
       imageRatio,
-      ASPECT_RATIO_TOLERANCE,
+      tolerance,
     );
 
     if (!isAspectRatioValid) {

@@ -1,10 +1,10 @@
 import { defineField } from "sanity";
 
 export default {
-  name: "clientSection",
+  name: "testimonialSection",
   type: "object",
-  title: "Client Section",
-  description: "A section for displaying clients inside a carousel.",
+  title: "Testimonial Section",
+  description: "A section for displaying testimonials inside a carousel.",
   fields: [
     defineField({
       name: "title",
@@ -13,12 +13,12 @@ export default {
       type: "string",
     }),
     defineField({
-      name: "Clients",
+      name: "Testimonials",
       type: "array",
       of: [
         {
           type: "reference",
-          to: { type: "client" },
+          to: { type: "testimonial" },
         },
       ],
     }),

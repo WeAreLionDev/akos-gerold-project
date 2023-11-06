@@ -1,13 +1,19 @@
+import { CLIENT_MAX_IMAGE_SIZE } from "config";
 import { defineField, defineType } from "sanity";
-import { maxImageSizeValidation } from "utility/maxImageSizeValidation";
-
-const CLIENT_MAX_IMAGE_SIZE: [number, number] = [160, 160];
+import { maxImageSizeValidation } from "utility";
 
 export default defineType({
   name: "client",
   title: "Client",
   type: "document",
   fields: [
+    defineField({
+      name: "order",
+      title: "Order",
+      type: "number",
+      description:
+        "Order in carousel. This is used to order the clients in the carousel. Please use a number between 1 and X.",
+    }),
     defineField({
       name: "companyName",
       title: "Company Name",

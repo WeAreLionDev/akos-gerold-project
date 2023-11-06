@@ -1,6 +1,7 @@
 import { ImageRule } from "sanity";
 import { getExtension, getImageDimensions } from "@sanity/asset-utils";
 import { SanityAsset } from "@sanity/image-url/lib/types/types";
+import { SizeValuesType } from "types";
 
 const ACCEPTED_IMAGE_FILE_TYPES: string[] = [
   "jpg",
@@ -12,7 +13,7 @@ const ACCEPTED_IMAGE_FILE_TYPES: string[] = [
 
 export const maxImageSizeValidation = (
   rule: ImageRule,
-  ratio: [number, number],
+  sizes: SizeValuesType,
 ) =>
   rule.custom((value?: SanityAsset) => {
     if (!value) return true;
@@ -29,8 +30,8 @@ export const maxImageSizeValidation = (
 
     const { width, height } = getImageDimensions(value.asset._ref);
 
-    if (width > ratio[0] && height > ratio[1]) {
-      return `Image size is not valid (${width}x${height} pixels), please use an image with a max size of ${ratio[0]}x${ratio[1]} pixels.`;
+    if (width > sizes[0] && height > sizes[1]) {
+      return `Image size is not valid (${width}x${height} pixels), please use an image with a max size of ${sizes[0]}x${sizes[1]} pixels.`;
     }
 
     return true;
