@@ -28,9 +28,9 @@ export default defineType({
           title: "Hero Section",
         }),
         defineArrayMember({
-          name: "introSection",
-          type: "introSection",
-          title: "Intro Section",
+          name: "welcomeSection",
+          type: "welcomeSection",
+          title: "Welcome Section",
         }),
         defineArrayMember({
           name: "clientSection",

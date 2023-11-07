@@ -16,7 +16,6 @@ const TestimonialCarousel: FC<TestimonialCarouselProps> = ({ testimonials }) => 
     testimonials.length,
     SLIDER_GAP_OFFSETS,
   )
-
   return (
     <div className="flex flex-col items-center">
       <div ref={containerRef} className="testimonial-carousel-container">
@@ -43,7 +42,7 @@ const TestimonialCarousel: FC<TestimonialCarouselProps> = ({ testimonials }) => 
           className="testimonial-carousel"
         >
           {testimonials.map((testimonial) => (
-            <Testimonial key={testimonial.id} {...testimonial} />
+            <Testimonial key={testimonial._id} {...testimonial} />
           ))}
         </motion.div>
         <div className="flex flex-col py-10">

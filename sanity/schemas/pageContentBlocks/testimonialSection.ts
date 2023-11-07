@@ -13,7 +13,8 @@ export default {
       type: "string",
     }),
     defineField({
-      name: "Testimonials",
+      name: "testimonials",
+      title: "Testimonials",
       type: "array",
       of: [
         {

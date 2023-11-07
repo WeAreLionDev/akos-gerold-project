@@ -32,7 +32,11 @@ export default defineType({
       ],
       lists: [
         { title: "Bullet", value: "bullet" },
-        { title: "Checkmark", value: "checkmark" },
+        {
+          title: "Checkmark",
+          value: "checkmark",
+          icon: () => "🗸",
+        },
       ],
       // Marks let you mark up inline text in the block editor.
       marks: {

@@ -7,19 +7,19 @@ type Props = HTMLAttributes<'img'> & { assets: { mobile: SanityImageSource; desk
 
 const { class: className, containerClass, assets, ...props } = Astro.props
 
-const desktopFallback = useGetImageUrl(assets.desktop).format('png').url()
+const desktopFallback = useGetImageUrl(assets.desktop).format('png').width(1920).url()
 
-const mobileLowFi = useGetImageUrl(assets.mobile).format('webp').url()
-const mobileHiFi = useGetImageUrl(assets.mobile).format('webp').url()
+const mobileLowFi = useGetImageUrl(assets.mobile).format('webp').width(480).url()
+const mobileHiFi = useGetImageUrl(assets.mobile).format('webp').width(800).url()
 
-const desktopLowFi = useGetImageUrl(assets.desktop).format('webp').url()
-const desktopHiFi = useGetImageUrl(assets.desktop).format('webp').url()
+const desktopLowFi = useGetImageUrl(assets.desktop).format('webp').width(1200).url()
+const desktopHiFi = useGetImageUrl(assets.desktop).format('webp').width(2400).url()
 ---
 
 <div class:list={['h-full w-full', containerClass]}>
   <picture>
     <source media="(max-width: 767px)" type="image/webp" srcset=`${mobileLowFi} 320w, ${mobileHiFi} 800w` />
     <source media="(min-width: 768px)" type="image/webp" srcset=`${desktopLowFi} 1200w, ${desktopHiFi} 2400w` />
-    <img {...props} src={desktopFallback} alt="Akos Gerold Presenting" class:list={['h-full w-full md:h-auto', className]} />
+    <img {...props} src={desktopFallback} class:list={['h-full w-full md:h-auto', className]} />
   </picture>
 </div>

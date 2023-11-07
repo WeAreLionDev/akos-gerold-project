@@ -1,5 +1,10 @@
 ---
 import { SectionContainer } from 'src/components/react'
+import type { WelcomeSectionType } from 'src/types'
+
+type Props = WelcomeSectionType
+
+const { body, signature, subtitle } = Astro.props
 ---
 
 <SectionContainer
@@ -11,12 +16,12 @@ import { SectionContainer } from 'src/components/react'
   </div>
   <div class="flex flex-col items-center justify-center py-20 md:max-w-xl lg:items-start xl:py-0">
     <h2 class="mb-5 px-10 text-center text-base italic md:mb-10 md:text-xl lg:text-left lg:text-2xl xl:text-3xl">
-      “Welcome! I am happy to see you here. We will provide you with everything you need to succeed.”
+      “{body}”
     </h2>
     <div class="flex flex-col items-center justify-between self-stretch lg:flex-row">
       <div class="mb-10 flex flex-col items-center lg:mb-0 lg:items-start">
-        <h3 class="font-mediumsrc/components/homepage/WelcomeSection.astro mb-2 font-poppins text-3xl">Akos Gerold</h3>
-        <h4 class="text-xl font-medium">Lorem ipsum</h4>
+        <h3 class="font-mediumsrc/components/homepage/WelcomeSection.astro mb-2 font-poppins text-3xl">{signature}</h3>
+        <h4 class="text-xl font-medium">{subtitle}</h4>
       </div>
       <div class="flex flex-row">
         <div class="flex lg:max-h-[108px] lg:max-w-[108px] xl:max-h-none xl:max-w-none">

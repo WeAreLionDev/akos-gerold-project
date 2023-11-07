@@ -17,7 +17,7 @@ export const ACCEPTED_IMAGE_FILE_TYPES: string[] = [
 
 export const SERVICE_SECTION_MAX_IMAGE_SIZE: SizeValuesType = [576, 576];
 
-export const TESTIMONIAL_MAX_IMAGE_SIZE: SizeValuesType = [500, 500];
+export const TESTIMONIAL_MAX_IMAGE_SIZE: SizeValuesType = [512, 512];
 
 export const CLIENT_MAX_IMAGE_SIZE: SizeValuesType = [160, 160];
 

@@ -1,40 +1,37 @@
 ---
+import ButtonLink from 'src/components/ButtonLink/ButtonLink.astro'
 import { SectionContainer } from 'src/components/react'
-import { CONTACT_EMAIL } from 'src/config'
+import AdaptiveImage from 'src/components/sanity/AdaptiveImage.astro'
+import type { HeroSectionType } from 'src/types'
+
+type Props = HeroSectionType
+
+const { button, subLink, desktopImage, heading, mobileImage, tagline } = Astro.props
 ---
 
 <SectionContainer fullWidth className="relative flex flex-col justify-center bg-slate-900 text-zinc-100">
-  <div class="z-10 h-full w-full">
-    <picture>
-      <source media="(max-width: 767px)" srcset="/homepage/hero_image_mob_x1.webp 320w, /homepage/hero_image_mob_x2.webp 800w" />
-      <source media="(min-width: 768px)" srcset="/homepage/hero_image_x1.webp 1200w, /homepage/hero_image_x2.webp 2400w" />
-      <img src="/homepage/hero_image_mob_x1.webp" alt="Akos Gerold Presenting" class="h-full w-full md:h-auto" />
-    </picture>
-  </div>
+  <AdaptiveImage assets={{ desktop: desktopImage, mobile: mobileImage }} containerClass="hero-gradient z-10 h-full w-full" />
   <div class="absolute bottom-1/4 z-20 h-full max-h-[75%] w-full md:bottom-0 md:max-h-max">
     <div class="container mx-auto flex h-full flex-col items-center px-4 md:items-start md:px-10">
       <div
         class="flex h-full w-full max-w-sm flex-col items-center justify-end sm:max-w-full md:max-w-md md:items-start md:justify-center xl:max-w-2xl"
       >
         <h1
-          class="mb-5 text-center font-poppins text-3xl font-extrabold uppercase sm:mb-10 sm:text-4xl md:mb-5 md:text-left md:text-3xl lg:mb-7 xl:mb-10 xl:text-5xl 2xl:text-6xl"
+          class="word mb-5 text-center font-poppins text-3xl font-extrabold uppercase sm:mb-10 sm:text-4xl md:mb-5 md:text-left md:text-3xl lg:mb-7 xl:mb-10 xl:text-5xl 2xl:text-6xl"
+          style={{ wordSpacing: '0.25rem' }}
         >
-          Persuade Ethically & Effectively
+          {heading}
         </h1>
         <h4
-          class="mb-5 text-center text-xs font-semibold capitalize tracking-wide sm:mb-10 sm:text-base md:mb-5 md:text-left lg:mb-7 xl:mb-10 xl:text-2xl"
+          class="mb-5 text-center text-xs font-semibold tracking-wide sm:mb-10 sm:text-base md:mb-5 md:text-left lg:mb-7 xl:mb-10 xl:text-2xl"
         >
-          We have turned the science into training & consultancy, so you can sell, convert and grow like Apple, Amazon and Google
+          {tagline}
         </h4>
+        <ButtonLink variant="secondary" href={button.url} class="mb-4 sm:mb-6 md:mb-4">{button.text}</ButtonLink>
         <a
-          href={`mailto:${CONTACT_EMAIL}`}
-          class="mb-5 rounded bg-amber-400 p-4 font-poppins font-bold text-stone-950 decoration-2 underline-offset-2 shadow transition-all duration-300 ease-in-out hover:underline hover:underline-offset-4 sm:mb-10 md:mb-5 lg:mb-7 xl:mb-10"
-          >Book a free call</a
-        >
-        <a
-          href={`mailto:${CONTACT_EMAIL}`}
+          href={subLink.url}
           class="text-xs font-semibold underline transition-colors duration-300 ease-in-out hover:decoration-amber-400 lg:text-lg"
-          >Find out about our services</a
+          >{subLink.text}</a
         >
       </div>
     </div>

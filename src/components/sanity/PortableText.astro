@@ -1,16 +1,24 @@
 ---
+import CheckmarkList from 'src/components/sanity/CheckmarkList.astro'
 import PortableTextImage from './PortableTextImage.astro'
 import { PortableText as PortableTextInternal } from 'astro-portabletext'
+import CheckmarkListItem from 'src/components/sanity/CheckmarkListItem.astro'
 
-const { portableText } = Astro.props
+const { portableText, class: className } = Astro.props
 
 const components = {
   type: {
     image: PortableTextImage,
   },
+  list: {
+    checkmark: CheckmarkList,
+  },
+  listItem: {
+    checkmark: CheckmarkListItem,
+  },
 }
 ---
 
-<div class="prose">
+<div class:list={['prose', className]}>
   <PortableTextInternal value={portableText} components={components} />
 </div>

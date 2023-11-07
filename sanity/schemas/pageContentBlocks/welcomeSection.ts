@@ -3,9 +3,9 @@ import { defineField } from "sanity";
 import { maxImageSizeValidation } from "utility";
 
 export default {
-  name: "introSection",
+  name: "welcomeSection",
   type: "object",
-  title: "Intro Section",
+  title: "Welcome Section",
   description: "A section that comes after the Hero Section.",
   fields: [
     defineField({

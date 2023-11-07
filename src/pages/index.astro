@@ -6,25 +6,25 @@ import OfferHelpSection from 'src/components/homepage/OfferHelpSection.astro'
 import ServiceSection from 'src/components/homepage/ServiceSection.astro'
 import WelcomeSection from 'src/components/homepage/WelcomeSection.astro'
 import WhatMyClientsThinkSection from 'src/components/homepage/WhatMyClientsThinkSection.astro'
-import WorkWithUsSection from 'src/components/homepage/WorkWithUsSection.astro'
+import WorkWithMeSection from 'src/components/homepage/WorkWithMeSection.astro'
 import Layout from 'src/layouts/Layout.astro'
-import SERVICES from 'src/mocks/services.json'
-import TESTIMONIALS from 'src/mocks/testimonials.json'
-import CLIENTS from 'src/mocks/clients.json'
-import type { ClientType, ServiceType, TestimonialType } from 'src/types'
+import { useGetHomepageQuery } from 'src/clients/sanity/queries/homepage/Homepage.queries'
 
-const services: ServiceType[] = SERVICES.map((service: unknown) => service as unknown as ServiceType)
-const testimonials: TestimonialType[] = TESTIMONIALS.map((testimonial: unknown) => testimonial as unknown as TestimonialType)
-const clients: ClientType[] = CLIENTS.map((client: unknown) => client as unknown as ClientType)
+export async function getHomepage() {
+  return await useGetHomepageQuery()
+}
+
+const { title, aboutMeSection, clientSection, heroSection, services, testimonialSection, welcomeSection, workWithMeSection } =
+  await getHomepage()
 ---
 
-<Layout title="Akos Gerold Astro + Sanity.io Template" description="Metadescription">
-  <HeroSection />
-  <WelcomeSection />
-  <MyClientsSection clients={clients} />
+<Layout title={title} description="Metadescription">
+  <HeroSection {...heroSection} />
+  <WelcomeSection {...welcomeSection} />
+  <MyClientsSection {...clientSection} />
   <OfferHelpSection />
   {services.map((service) => <ServiceSection {...service} />)}
-  <WhatMyClientsThinkSection testimonials={testimonials} />
-  <AboutMeSection />
-  <WorkWithUsSection />
+  <WhatMyClientsThinkSection {...testimonialSection} />
+  <AboutMeSection {...aboutMeSection} />
+  <WorkWithMeSection {...workWithMeSection} />
 </Layout>

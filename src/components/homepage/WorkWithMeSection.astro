@@ -1,0 +1,22 @@
+---
+import ButtonLink from 'src/components/ButtonLink/ButtonLink.astro'
+import { SectionContainer } from 'src/components/react'
+import type { WorkWithMeSectionType } from 'src/types'
+
+type Props = WorkWithMeSectionType
+
+const { body, button, title } = Astro.props
+---
+
+<SectionContainer
+  className="work-with-us-section bg-stone-100 py-10 text-stone-950 md:py-20 xl:py-40"
+  containerClass="flex flex-col px-4 md:px-10"
+>
+  <div class="relative flex h-full w-full flex-col items-start sm:max-w-sm xl:max-w-lg 2xl:max-w-2xl">
+    <h2 class="mb-10 font-poppins text-4xl font-bold xl:text-5xl">{title}</h2>
+    <p class="mb-10 text-lg font-medium xl:text-2xl">
+      {body}
+    </p>
+    <ButtonLink href={button.url} class="text-xl md:px-10 md:py-5 md:text-2xl">{button.text}</ButtonLink>
+  </div>
+</SectionContainer>

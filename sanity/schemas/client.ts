@@ -8,13 +8,6 @@ export default defineType({
   type: "document",
   fields: [
     defineField({
-      name: "order",
-      title: "Order",
-      type: "number",
-      description:
-        "Order in carousel. This is used to order the clients in the carousel. Please use a number between 1 and X.",
-    }),
-    defineField({
       name: "companyName",
       title: "Company Name",
       type: "string",

@@ -14,6 +14,12 @@ export default defineType({
       initialValue: false,
     }),
     defineField({
+      title: "Orientation? (Image on the left, text on the right)",
+      name: "orientation",
+      type: "boolean",
+      initialValue: false,
+    }),
+    defineField({
       name: "image",
       type: "image",
       description:

@@ -22,7 +22,7 @@ const Rating: FC<RatingProps> = ({ subtitle, rating, maxRating = 5, className })
         {emptyStars.map((emptyStar) => (
           <FontAwesomeIcon key={`half-star-${emptyStar}`} icon={faStarRegular} className={fontAwesomeClasses} />
         ))}
-        <span className="text-sm sm:text-base xl:text-lg">
+        <span className="text-sm sm:text-base xl:text-2xl">
           {rating}/{maxRating}
         </span>
       </div>

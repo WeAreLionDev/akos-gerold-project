@@ -2,6 +2,8 @@ import { motion, useAnimationControls } from 'framer-motion'
 import { type FC, useCallback, useEffect, useRef, useState } from 'react'
 import { useMediaBreakpoint } from 'src/utility'
 
+import Image from 'src/components/sanity/Image.tsx'
+
 import './ClientCarousel.css'
 import type { ClientCarouselProps } from './ClientCarousel.interface'
 
@@ -11,6 +13,8 @@ const ClientCarousel: FC<ClientCarouselProps> = ({ clients }) => {
   const animationControls = useAnimationControls()
   const { mediaBreakpoint } = useMediaBreakpoint()
   const [carouselWidth, setCarouselWidth] = useState<number>(0)
+
+  const imgClasses = 'block h-auto w-full object-cover grayscale transition-all duration-300 ease-in-out hover:grayscale-0 delay-150'
 
   const onReset = useCallback(() => {
     if (mediaBreakpoint === 'sm' || mediaBreakpoint === 'md') return
@@ -40,45 +44,25 @@ const ClientCarousel: FC<ClientCarouselProps> = ({ clients }) => {
         onDragEnd={onReset}
         style={{ width: carouselWidth }}
       >
-        {clients.map(({ id, logo }, index) => {
+        {clients.map(({ _id, image, companyName }, index) => {
           if (index === 0) {
             return (
-              <motion.div
-                ref={itemsRef}
-                whileTap={{ scale: 1.5 }}
-                whileHover={{
-                  scale: 1.5,
-                  transition: { duration: 0.5, easings: 'easeInOut', damping: 0.25, stiffness: 500 },
-                }}
-                key={id}
-                className="flex flex-col items-center justify-center"
-              >
+              <motion.div ref={itemsRef} key={_id} className="flex flex-col items-center justify-center">
                 <div className="flex w-20 cursor-pointer flex-col">
-                  <img src={logo} alt={id} className="block h-auto w-full object-cover" />
+                  <Image asset={image} alt={companyName} className={imgClasses} />
                 </div>
               </motion.div>
             )
           }
           return (
-            <motion.div
-              whileTap={{ scale: 1.5 }}
-              whileHover={{
-                scale: 1.5,
-                transition: { duration: 0.5, easings: 'easeInOut', damping: 0.25, stiffness: 500 },
-              }}
-              key={id}
-              className="flex flex-col items-center justify-center"
-            >
+            <motion.div key={_id} className="flex flex-col items-center justify-center">
               <div className="flex w-20 cursor-pointer flex-col">
-                <img src={logo} alt={id} className="block h-auto w-full object-cover" />
+                <Image asset={image} alt={companyName} className={imgClasses} />
               </div>
             </motion.div>
           )
         })}
       </motion.div>
-      <div className="client-scrollbar">
-        <motion.div />
-      </div>
     </div>
   )
 }

@@ -1,12 +1,14 @@
 ---
 import classNames from 'classnames'
+import ButtonLink from 'src/components/ButtonLink/ButtonLink.astro'
 import { SectionContainer, TestimonialBlock } from 'src/components/react'
-import { CONTACT_EMAIL } from 'src/config'
-import type { ServiceType } from 'src/types'
+import Image from 'src/components/sanity/Image.astro'
+import PortableText from 'src/components/sanity/PortableText.astro'
+import type { ServiceSectionType } from 'src/types'
 
-type Props = ServiceType
+type Props = ServiceSectionType
 
-const { title, body, image, testimonial, orientation, variant } = Astro.props
+const { title, body, image, testimonial, orientation, variant, tagline, button } = Astro.props
 
 const variantClasses = {
   dark: 'bg-slate-900 text-zinc-100',
@@ -18,13 +20,14 @@ const variantTestimonialClasses = {
   light: 'border-slate-900',
 }
 
+const variantBodyClasses = {
+  dark: 'text-zinc-100 prose-blockquote:text-zinc-100',
+  light: 'text-slate-900 prose-blockquote:text-slate-900',
+}
+
 const orientationClasses = {
   left: 'lg:flex-row',
   right: 'lg:flex-row-reverse',
-}
-const orientationTestimonalClasses = {
-  left: 'self-start',
-  right: 'self-end',
 }
 
 const imageVariationClasses = {
@@ -40,22 +43,21 @@ const bodyVariationClasses = {
 
 <SectionContainer className={classNames(variantClasses[variant], 'px-4 py-20 md:px-10 md:py-40')} containerClass="flex flex-col">
   <div class={classNames(orientationClasses[orientation], 'flex flex-col items-center md:mb-10 md:items-start md:justify-between')}>
-    <div class={classNames(imageVariationClasses[orientation], 'mb-10 flex max-w-sm md:max-w-xl lg:mb-0')}>
-      <img src={image} alt={title} class="h-auto w-full" />
-    </div>
-    <div class={classNames(bodyVariationClasses[orientation], 'flex max-w-sm flex-col items-start md:max-w-lg xl:max-w-xl 2xl:max-w-2xl')}>
+    <Image
+      asset={image}
+      containerClass={classNames(imageVariationClasses[orientation], 'mb-10 flex w-full max-w-sm md:max-w-xl lg:mb-0')}
+    />
+    <div
+      class={classNames(
+        bodyVariationClasses[orientation],
+        'flex w-full max-w-sm flex-col items-start md:max-w-lg xl:max-w-xl 2xl:max-w-2xl',
+      )}
+    >
       <h2 class="mb-10 font-poppins text-4xl font-bold">{title}</h2>
-      <p class="mb-10 text-lg lg:text-xl xl:text-2xl">{body}</p>
-      <TestimonialBlock {...testimonial} className={classNames(variantTestimonialClasses[variant], 'mb-10 flex md:hidden')} />
-      <a
-        href={`mailto:${CONTACT_EMAIL}`}
-        class="rounded bg-amber-400 p-4 font-poppins font-bold text-stone-950 decoration-2 underline-offset-2 shadow transition-all duration-300 ease-in-out hover:underline hover:underline-offset-4"
-        >Contact me</a
-      >
+      <PortableText portableText={body} class={classNames(variantBodyClasses[variant], 'mb-10 text-lg lg:text-xl xl:text-2xl')} />
+      <TestimonialBlock {...testimonial} className={classNames(variantTestimonialClasses[variant], 'mb-10 flex')} />
+      <h4 class="mb-5 text-xs font-semibold sm:mb-10 md:mb-5 lg:mb-7 lg:text-lg xl:mb-10">{tagline}</h4>
+      <ButtonLink variant={variant === 'dark' ? 'secondary' : 'primary'} href={button.url}>{button.text}</ButtonLink>
     </div>
   </div>
-  <TestimonialBlock
-    {...testimonial}
-    className={classNames(variantTestimonialClasses[variant], orientationTestimonalClasses[orientation], 'hidden md:flex')}
-  />
 </SectionContainer>
