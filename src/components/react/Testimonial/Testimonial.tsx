@@ -1,15 +1,15 @@
 import type { FC } from 'react'
 
+import Image from 'src/components/sanity/Image.tsx'
+
 import './Testimonial.css'
 import type { TestimonialProps } from './Testimonial.interface'
 
-const Testimonal: FC<TestimonialProps> = ({ author, avatar, position, body }) => {
+const Testimonal: FC<TestimonialProps> = ({ author, image, position, body }) => {
   return (
     <div className="testimonial-container">
       <div className="testimonial">
-        <div className="mb-5 flex max-h-[100px] max-w-[100px] flex-col overflow-hidden rounded-full">
-          <img src={avatar} alt={author} className="block h-auto w-full" />
-        </div>
+        <Image containerClass="mb-5 flex max-h-[100px] max-w-[100px] flex-col overflow-hidden rounded-full" asset={image} />
         <h3 className="mb-2 font-poppins text-xl font-semibold">{author}</h3>
         <h4 className="mb-5 font-poppins text-base">{position}</h4>
         <p className="font-base text-center">“{body}”</p>

@@ -26,8 +26,8 @@ export const SITE_URL = import.meta.env.ASTRO_WEBSITE_URL
 export const SITE_TITLE_PREFIX = 'Akos Gerold -'
 
 export const SANITY_CLIENT_CONFIG = {
-  projectId: import.meta.env.SANITY_STUDIO_PROJECT_ID,
-  dataset: import.meta.env.SANITY_STUDIO_DATASET,
+  projectId: 'ss3dws13',
+  dataset: 'production',
   apiVersion: '2021-03-25',
   useCdn: true,
 }

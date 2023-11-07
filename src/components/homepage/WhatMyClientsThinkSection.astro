@@ -1,16 +1,17 @@
 ---
 import { SectionContainer } from 'src/components/react'
-import type { TestimonialType } from 'src/types'
+import type { SanityTestimonialType } from 'src/types'
 import { TestimonialCarousel } from 'src/components/react'
 
 type Props = {
-  testimonials: TestimonialType[]
+  title: string
+  testimonials: SanityTestimonialType[]
 }
 
-const { testimonials } = Astro.props
+const { testimonials, title } = Astro.props
 ---
 
 <SectionContainer id="testimonials" className="bg-stone-100 py-10 text-stone-950 lg:py-20 xl:py-40" containerClass="flex flex-col">
-  <h2 class="mb-10 text-center font-poppins text-5xl font-bold md:mb-20">My clients</h2>
+  <h2 class="mb-10 text-center font-poppins text-5xl font-bold md:mb-20">{title}</h2>
   <TestimonialCarousel client:only testimonials={testimonials} />
 </SectionContainer>

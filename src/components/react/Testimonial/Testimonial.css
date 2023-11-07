@@ -1,5 +1,5 @@
 .testimonial-container {
-  @apply flex flex-col items-center justify-self-center p-4;
+  @apply flex w-full flex-col justify-self-center p-4;
 }
 
 .testimonial {

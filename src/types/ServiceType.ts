@@ -1,4 +1,4 @@
-import type { TestimonialType } from 'src/types'
+import type { SanityTestimonialType } from 'src/types'
 
 export type ServiceType = {
   title: string
@@ -6,5 +6,5 @@ export type ServiceType = {
   image: string
   variant: 'dark' | 'light'
   orientation: 'left' | 'right'
-  testimonial: TestimonialType
+  testimonial: SanityTestimonialType
 }

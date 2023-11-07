@@ -1,0 +1,30 @@
+---
+import type { ToolkitPortableTextList } from '@portabletext/toolkit'
+const { children } = Astro.props.node
+---
+
+<ul class="checkmark-list">
+  {
+    children.map((child: ToolkitPortableTextList) => {
+      if ('text' in child.children[0]!) {
+        return <li>{child.children[0].text}</li>
+      }
+      return null
+    })
+  }
+</ul>
+
+<style>
+  .checkmark-list {
+    padding-left: 1.375em;
+  }
+  .checkmark-list li {
+    padding-left: 0.625em;
+    list-style-type: none;
+  }
+
+  .checkmark-list li::marker {
+    content: '✔';
+    font-size: 0.75em;
+  }
+</style>

@@ -1,7 +1,11 @@
 ---
 import ButtonLink from 'src/components/ButtonLink/ButtonLink.astro'
 import { SectionContainer } from 'src/components/react'
-import { CONTACT_EMAIL } from 'src/config'
+import type { WorkWithMeSectionType } from 'src/types'
+
+type Props = WorkWithMeSectionType
+
+const { body, button, title } = Astro.props
 ---
 
 <SectionContainer
@@ -9,11 +13,10 @@ import { CONTACT_EMAIL } from 'src/config'
   containerClass="flex flex-col px-4 md:px-10"
 >
   <div class="relative flex h-full w-full flex-col items-start sm:max-w-sm xl:max-w-lg 2xl:max-w-2xl">
-    <h2 class="mb-10 font-poppins text-4xl font-bold xl:text-5xl">Work with us &amp; drive decisions when you present!</h2>
+    <h2 class="mb-10 font-poppins text-4xl font-bold xl:text-5xl">{title}</h2>
     <p class="mb-10 text-lg font-medium xl:text-2xl">
-      Arrange an obligation-free 30-minute call today. We &rsquo;ll look at how you present and provide you with an honest appraisal of how
-      you can influence decisions better.
+      {body}
     </p>
-    <ButtonLink href={CONTACT_EMAIL} class="text-xl md:px-10 md:py-5 md:text-2xl">Contact me</ButtonLink>
+    <ButtonLink href={button.url} class="text-xl md:px-10 md:py-5 md:text-2xl">{button.text}</ButtonLink>
   </div>
 </SectionContainer>

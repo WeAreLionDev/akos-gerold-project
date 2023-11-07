@@ -10,7 +10,7 @@ import {
   serviceSection,
   testimonialSection,
   workWithMeSection,
-  introSection,
+  welcomeSection,
 } from "./pageContentBlocks";
 import testimonial from "./testimonial";
 
@@ -22,7 +22,7 @@ export const schemaTypes = [
   tag,
   blockContent,
   heroSection,
-  introSection,
+  welcomeSection,
   clientSection,
   aboutMeSection,
   serviceSection,

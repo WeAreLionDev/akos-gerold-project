@@ -4,4 +4,4 @@ export { default as aboutMeSection } from "./aboutMeSection";
 export { default as serviceSection } from "./serviceSection";
 export { default as testimonialSection } from "./testimonialSection";
 export { default as workWithMeSection } from "./workWithMeSection";
-export { default as introSection } from "./introSection";
+export { default as welcomeSection } from "./welcomeSection";

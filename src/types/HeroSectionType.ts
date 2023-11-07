@@ -1,12 +1,3 @@
-import type { SanityImageWithAssetStub } from '@sanity/image-url/lib/types/types'
+import type { SanityHeroSectionType } from 'src/clients/sanity/queries/homepage/Homepage.interface'
 
-import type { SanityLinkType } from './SanityLinkType'
-
-export type HeroSectionType = {
-  heading: string
-  tagline: string
-  button: SanityLinkType
-  subLink: SanityLinkType
-  desktopImage: SanityImageWithAssetStub
-  mobileImage: SanityImageWithAssetStub
-}
+export type HeroSectionType = Omit<SanityHeroSectionType, '_type'>

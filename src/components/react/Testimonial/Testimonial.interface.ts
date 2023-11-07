@@ -1,3 +1,3 @@
-import type { TestimonialType } from 'src/types'
+import type { SanityTestimonialType } from 'src/types'
 
-export type TestimonialProps = TestimonialType
+export type TestimonialProps = SanityTestimonialType

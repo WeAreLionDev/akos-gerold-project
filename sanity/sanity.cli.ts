@@ -23,6 +23,7 @@ export default defineCliConfig({
         config: path.resolve(__dirname, "./config"),
         types: path.resolve(__dirname, "./types"),
         components: path.resolve(__dirname, "./components"),
+        assets: path.resolve(__dirname, "./assets"),
       },
     },
   },

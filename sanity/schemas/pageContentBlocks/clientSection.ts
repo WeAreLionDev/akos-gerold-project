@@ -13,7 +13,7 @@ export default {
       type: "string",
     }),
     defineField({
-      name: "Clients",
+      name: "clients",
       type: "array",
       of: [
         {

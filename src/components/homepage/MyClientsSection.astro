@@ -1,12 +1,10 @@
 ---
 import { ClientCarousel, SectionContainer } from 'src/components/react'
-import type { ClientType } from 'src/types'
+import type { ClientSectionType } from 'src/types'
 
-type Props = {
-  clients: ClientType[]
-}
+type Props = ClientSectionType
 
-const { clients } = Astro.props
+const { clients, title } = Astro.props
 ---
 
 <SectionContainer
@@ -14,6 +12,6 @@ const { clients } = Astro.props
   className="overflow-hidden bg-stone-100 py-20 text-stone-950 xl:py-40"
   containerClass="flex flex-col items-center"
 >
-  <h2 class="mb-20 text-center font-poppins text-5xl font-bold xl:mb-40">My clients</h2>
+  <h2 class="mb-20 text-center font-poppins text-5xl font-bold xl:mb-40">{title}</h2>
   <ClientCarousel client:only clients={clients} />
 </SectionContainer>
