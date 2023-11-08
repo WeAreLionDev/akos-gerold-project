@@ -6,7 +6,19 @@ export default defineType({
   type: "document",
   title: "Page",
   fields: [
-    defineField({ name: "title", type: "string" }),
+    defineField({
+      name: "title",
+      title: "Page Title",
+      description: "Page title displayed in search engines.",
+      type: "string",
+    }),
+    defineField({
+      name: "metaDescription",
+      title: "Page Description",
+      description:
+        "This is the description that is displayed in search engines.",
+      type: "text",
+    }),
     defineField({
       title: "Is this the homepage?",
       name: "homepage",
