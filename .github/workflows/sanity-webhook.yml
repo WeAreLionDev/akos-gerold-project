@@ -37,6 +37,11 @@ jobs:
       - name: 🔀 Checkout
         uses: actions/checkout@v2
 
+      - name: ⏰ Debounce 5 minutes
+        uses: zachary95/github-actions-debounce
+        with:
+          wait: 60
+
       - name: 💬 Initial Slack Message
         id: slack-initial
         uses: weareliondev/weareliondev-devops/.github/actions/slack/notifications/deploy/initial@main
