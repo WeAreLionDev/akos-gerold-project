@@ -18,7 +18,7 @@ const convertSanityServiceSectionToServiceSection = ({
 }: SanityServiceSectionType): ServiceSectionType => ({
   ...rest,
   orientation: orientation ? 'left' : 'right',
-  variant: blueTheme ? 'light' : 'dark',
+  variant: blueTheme ? 'dark' : 'light',
 })
 
 const convertSanityHomepageToHomepage = (homepage: SanityHomepageType) => {

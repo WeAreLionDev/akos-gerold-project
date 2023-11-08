@@ -35,7 +35,7 @@ export default defineType({
       name: "image",
       type: "image",
       description:
-        "Profile picture of the testimonial giver. Please don't use transparent and use a max resolution of 500x500 pixels.",
+        "Profile picture of the testimonial giver. Please don't use transparent and use a max resolution of 512x512 pixels.",
       validation: (rule) =>
         maxImageSizeValidation(rule, TESTIMONIAL_MAX_IMAGE_SIZE),
       fields: [
