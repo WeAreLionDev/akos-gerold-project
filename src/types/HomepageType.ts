@@ -9,6 +9,7 @@ import type { HeroSectionType, ServiceSectionType, WelcomeSectionType } from 'sr
 
 export type HomepageType = {
   title: string
+  metaDescription: string
   heroSection: HeroSectionType
   welcomeSection: WelcomeSectionType
   clientSection: Omit<SanityClientSectionType, '_type'>

@@ -14,11 +14,20 @@ export async function getHomepage() {
   return await useGetHomepageQuery()
 }
 
-const { title, aboutMeSection, clientSection, heroSection, services, testimonialSection, welcomeSection, workWithMeSection } =
-  await getHomepage()
+const {
+  title,
+  metaDescription,
+  aboutMeSection,
+  clientSection,
+  heroSection,
+  services,
+  testimonialSection,
+  welcomeSection,
+  workWithMeSection,
+} = await getHomepage()
 ---
 
-<Layout title={title} description="Metadescription">
+<Layout title={title} description={metaDescription}>
   <HeroSection {...heroSection} />
   <WelcomeSection {...welcomeSection} />
   <MyClientsSection {...clientSection} />
