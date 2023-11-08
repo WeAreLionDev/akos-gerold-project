@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: ⏰ Debounce 5 minutes
-        uses: zachary95/github-actions-debounce
+        uses: zachary95/github-actions-debounce@main
         with:
           wait: 60
 
