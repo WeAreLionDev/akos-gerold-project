@@ -35,7 +35,7 @@ jobs:
 
     steps:
       - name: 🔀 Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.1.1
 
       - name: 💬 Initial Slack Message
         id: slack-initial
@@ -69,7 +69,7 @@ jobs:
 
     steps:
       - name: 🔀 Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.1.1
 
       - uses: actions/setup-node@v3
         with:
@@ -121,7 +121,7 @@ jobs:
 
     steps:
       - name: 🔀 Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.1.1
 
       - name: 💬 Update Slack Message
         uses: weareliondev/weareliondev-devops/.github/actions/slack/notifications/deploy/update@main
