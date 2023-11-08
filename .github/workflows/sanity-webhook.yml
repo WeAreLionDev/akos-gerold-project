@@ -41,6 +41,7 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    needs: debounce
 
     outputs:
       slack-message-id: ${{ steps.slack-initial.outputs.ts }}
@@ -104,7 +105,7 @@ jobs:
   build:
     name: Build Astro
     runs-on: ubuntu-latest
-    needs: test
+    needs: [debounce, test]
 
     steps:
       - name: 🔀 Checkout
@@ -188,7 +189,7 @@ jobs:
   deploy:
     name: Deploy to hosting
     runs-on: ubuntu-latest
-    needs: [test, build]
+    needs: [debounce, test, build]
     steps:
       - name: 🔀 Checkout
         uses: actions/checkout@v3
