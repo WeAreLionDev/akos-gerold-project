@@ -14,7 +14,7 @@ const { class: className } = Astro.props
 <header class={classNames('w-full bg-slate-900 text-zinc-100', className)}>
   <div class="container mx-auto flex items-center justify-between px-5 py-8 md:px-10 md:py-5 lg:px-12">
     <Logo class="max-w-[98px] md:mr-10 md:max-w-[138px]" />
-    <Rating rating={4.7} maxRating={5} subtitle="Based on 1379 reviewers" className="flex" />
+    <Rating rating={4.7} maxRating={5} subtitle="Based on 1379" className="flex" />
     <MenuButton className="xl:hidden" client:only />
     <ul class="o hidden list-none flex-row xl:flex">
       <Navigation />

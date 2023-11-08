@@ -26,7 +26,13 @@ const Rating: FC<RatingProps> = ({ subtitle, rating, maxRating = 5, className })
           {rating}/{maxRating}
         </span>
       </div>
-      <span className="text-sm text-zinc-100  sm:text-base xl:text-lg">{subtitle}</span>
+      <span className="text-sm text-zinc-100  sm:text-base xl:text-lg">
+        {subtitle}{' '}
+        <a href="#testimonials" className="underline transition-colors duration-300 ease-in-out hover:decoration-amber-400">
+          {' '}
+          reviewers
+        </a>
+      </span>
     </div>
   )
 }
