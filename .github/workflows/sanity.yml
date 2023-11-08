@@ -66,6 +66,10 @@ jobs:
           SANITY_AUTH_TOKEN: ${{ env.SANITY_AUTH_TOKEN }}
         run: |
           yarn build
+
+      - name: ⚙️ Copy .htaccess to dist
+        shell: bash
+        run: |
           mv ../deployment/sanity/.htaccess dist/.htaccess
 
       - name: 📥 Tar Build
