@@ -34,11 +34,6 @@ jobs:
       slack-message-id: ${{ steps.slack-initial.outputs.ts }}
 
     steps:
-      - name: ⏰ Debounce 5 minutes
-        uses: zachary95/github-actions-debounce
-        with:
-          wait: 300
-
       - name: 🔀 Checkout
         uses: actions/checkout@v2
 
