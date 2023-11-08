@@ -16,7 +16,7 @@ const { children } = Astro.props.node
 
 <style>
   .checkmark-list {
-    padding-left: 1.375em;
+    padding-left: 0.75em;
   }
   .checkmark-list li {
     padding-left: 0.625em;
@@ -24,7 +24,28 @@ const { children } = Astro.props.node
   }
 
   .checkmark-list li::marker {
-    content: '✔';
+    content: '\2714';
     font-size: 0.75em;
+    line-height: 1.4;
+  }
+
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+      .checkmark-list {
+        padding-left: 0;
+      }
+      .checkmark-list li {
+        position: relative;
+        padding-left: 1.375em;
+      }
+      .checkmark-list li::before {
+        position: absolute;
+        top: 0.35em;
+        left: 0;
+        content: '\2714';
+        font-size: 0.75em;
+        line-height: 1.4;
+      }
+    }
   }
 </style>
