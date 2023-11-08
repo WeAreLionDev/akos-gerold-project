@@ -26,6 +26,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  debounce:
+    name: Workflow Debounce
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔀 Checkout
+        uses: actions/checkout@v2
+
+      - name: ⏰ Debounce 10 minutes
+        uses: zachary95/github-actions-debounce@main
+        with:
+          wait: 600
+
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -37,11 +49,6 @@ jobs:
       - name: 🔀 Checkout
         uses: actions/checkout@v2
 
-      - name: ⏰ Debounce 5 minutes
-        uses: zachary95/github-actions-debounce@main
-        with:
-          wait: 60
-
       - name: 💬 Initial Slack Message
         id: slack-initial
         uses: weareliondev/weareliondev-devops/.github/actions/slack/notifications/deploy/initial@main
@@ -49,4 +56,182 @@ jobs:
           slack-bot-token: ${{ env.SLACK_BOT_TOKEN }}
           slack-channel-id: ${{ env.SLACK_CHANNEL_ID }}
           deploy-url: ${{ env.DEPLOY_URL }}
-          context-status: 'Running: Test Are WebHooks working?'
+          context-status: 'Running: Test'
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: 'package.json'
+
+      - name: 🐱‍🏍 Install Yarn
+        uses: weareliondev/weareliondev-devops/.github/actions/yarn/install@main
+        with:
+          cwd: '.'
+          enable-corepack: false
+          cache-node-modules: true
+          cache-install-state: true
+          fontawesome: true
+          fontawesome-npm-token: ${{ env.FONTAWESOME_NPM_AUTH_TOKEN }}
+
+      - name: 🦋 Prettier Check
+        shell: bash
+        run: |
+          yarn format:ci
+
+      - name: 📚 ESLint Check
+        shell: bash
+        run: |
+          yarn lint
+
+      - name: 💬 Update Slack Message
+        uses: weareliondev/weareliondev-devops/.github/actions/slack/notifications/deploy/update@main
+        with:
+          initial-message: ${{ steps.slack-initial.outputs.ts }}
+          slack-bot-token: ${{ env.SLACK_BOT_TOKEN }}
+          slack-channel-id: ${{ env.SLACK_CHANNEL_ID }}
+          deploy-url: ${{ env.DEPLOY_URL }}
+          context-status: 'Preparing: Build Astro'
+
+      - name: 💬 Failure Slack Message
+        if: failure()
+        uses: weareliondev/weareliondev-devops/.github/actions/slack/notifications/deploy/failed@main
+        with:
+          initial-message: ${{ steps.slack-initial.outputs.ts }}
+          slack-bot-token: ${{ env.SLACK_BOT_TOKEN }}
+          slack-channel-id: ${{ env.SLACK_CHANNEL_ID }}
+          deploy-url: ${{ env.DEPLOY_URL }}
+          context-status: 'Failed: Test'
+
+  build:
+    name: Build Astro
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: 🔀 Checkout
+        uses: actions/checkout@v2
+
+      - name: 💬 Update Slack Message
+        uses: weareliondev/weareliondev-devops/.github/actions/slack/notifications/deploy/update@main
+        with:
+          initial-message: ${{ needs.test.outputs.slack-message-id }}
+          slack-bot-token: ${{ env.SLACK_BOT_TOKEN }}
+          slack-channel-id: ${{ env.SLACK_CHANNEL_ID }}
+          deploy-url: ${{ env.DEPLOY_URL }}
+          context-status: 'Running: Build Astro'
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: 'package.json'
+
+      - name: Install Yarn
+        uses: weareliondev/weareliondev-devops/.github/actions/yarn/install@main
+        with:
+          cwd: '.'
+          enable-corepack: false
+          cache-node-modules: true
+          cache-install-state: true
+          fontawesome: true
+          fontawesome-npm-token: ${{ env.FONTAWESOME_NPM_AUTH_TOKEN }}
+          
+      - name: 🗃️ Create .env file for frontend
+        uses: SpicyPizza/create-envfile@v2.0.2
+        with:
+          envkey_SANITY_STUDIO_PROJECT_ID: ${{ env.SANITY_STUDIO_PROJECT_ID }}
+          envkey_SANITY_STUDIO_DATASET: ${{ env.SANITY_STUDIO_DATASET }}
+          envkey_ASTRO_WEBSITE_URL: ${{ env.DEPLOY_URL }}
+          envkey_ASTRO_DISABLE_INDEXING: ${{ env.ASTRO_DISABLE_INDEXING }}
+          envkey_ASTRO_GTAG_ID: ${{ env.ASTRO_GTAG_ID }}
+          envkey_ASTRO_GTM_ID: ${{ env.ASTRO_GTM_ID }}
+          file_name: .env
+
+      - name: 🗳️ Run Env Variables Check
+        shell: bash
+        run: |
+          yarn env:check
+
+      - name: ⚙️ Build
+        shell: bash
+        run: |
+          yarn build
+
+      - name: 📥 Tar Build
+        shell: bash
+        run: |
+          tar -cvzf dist.tar.gz dist .env
+
+      - name: 📦 Store Build
+        uses: actions/upload-artifact@v3.1.3
+        with:
+          name: production-deployment-build
+          path: dist.tar.gz
+          retention-days: 1
+
+      - name: 💬 Update Slack Message
+        uses: weareliondev/weareliondev-devops/.github/actions/slack/notifications/deploy/update@main
+        with:
+          initial-message: ${{ needs.test.outputs.slack-message-id }}
+          slack-bot-token: ${{ env.SLACK_BOT_TOKEN }}
+          slack-channel-id: ${{ env.SLACK_CHANNEL_ID }}
+          deploy-url: ${{ env.DEPLOY_URL }}
+          context-status: 'Preparing: Deploy To Hosting'
+
+      - name: 💬 Failure Slack Message
+        if: failure()
+        uses: weareliondev/weareliondev-devops/.github/actions/slack/notifications/deploy/failed@main
+        with:
+          initial-message: ${{ needs.test.outputs.slack-message-id }}
+          slack-bot-token: ${{ env.SLACK_BOT_TOKEN }}
+          slack-channel-id: ${{ env.SLACK_CHANNEL_ID }}
+          deploy-url: ${{ env.DEPLOY_URL }}
+          context-status: 'Failed: Build Astro'
+
+  deploy:
+    name: Deploy to hosting
+    runs-on: ubuntu-latest
+    needs: [test, build]
+    steps:
+      - name: 🔀 Checkout
+        uses: actions/checkout@v3
+
+      - name: ♻️ Restore Build from previous job
+        uses: actions/download-artifact@v3.0.2
+        with:
+          name: production-deployment-build
+          path: dist.tar.gz
+
+      - name: 📤 Untar Build
+        shell: bash
+        run: |
+          tar -xvzf dist.tar.gz/dist.tar.gz -C ./
+          rm -rf dist.tar.gz
+
+      - name: 📀 Deploy to LionDev Cloud
+        id: deploy-to-plesk
+        uses: weareliondev/weareliondev-devops/.github/actions/deploy/astro@main
+        with:
+          host: ${{ env.DEPLOY_SSH_HOST }}
+          username: ${{ env.DEPLOY_SSH_USERNAME }}
+          key: ${{ env.DEPLOY_SSH_KEY }}
+          passphrase: ${{ env.DEPLOY_SSH_PASSPHRASE }}
+          port: ${{ env.DEPLOY_SSH_PORT }}
+          source: 'dist/**,.env'
+          deploy-path: ${{ env.DEPLOY_PATH }}
+
+      - name: 💬 Update Slack Message
+        uses: weareliondev/weareliondev-devops/.github/actions/slack/notifications/deploy/success@main
+        with:
+          initial-message: ${{ needs.test.outputs.slack-message-id }}
+          slack-bot-token: ${{ env.SLACK_BOT_TOKEN }}
+          slack-channel-id: ${{ env.SLACK_CHANNEL_ID }}
+          deploy-url: ${{ env.DEPLOY_URL }}
+          context-status: 'Success: Deploy to hosting'
+
+      - name: 💬 Failure Slack Message
+        if: failure()
+        uses: weareliondev/weareliondev-devops/.github/actions/slack/notifications/deploy/failed@main
+        with:
+          initial-message: ${{ needs.test.outputs.slack-message-id }}
+          slack-bot-token: ${{ env.SLACK_BOT_TOKEN }}
+          slack-channel-id: ${{ env.SLACK_CHANNEL_ID }}
+          deploy-url: ${{ env.DEPLOY_URL }}
+          context-status: 'Failed: Deploy to hosting'
