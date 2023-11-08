@@ -1,0 +1,52 @@
+name: Redeploy Production on Sanity Change
+
+on:
+  repository_dispatch:
+    types: [sanity-update]
+
+env:
+  DEPLOY_URL: ${{ vars.DEPLOY_URL }}
+  DEPLOY_PATH: ${{ vars.DEPLOY_PATH }}
+  ASTRO_DISABLE_INDEXING: ${{ vars.ASTRO_DISABLE_INDEXING }}
+  ASTRO_GTAG_ID: ${{ vars.ASTRO_GTAG_ID }}
+  ASTRO_GTM_ID: ${{ vars.ASTRO_GTM_ID }}
+  SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+  SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+  FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
+  SANITY_STUDIO_PROJECT_ID: ${{ secrets.SANITY_STUDIO_PROJECT_ID }}
+  SANITY_STUDIO_DATASET: ${{ secrets.SANITY_STUDIO_DATASET }}
+  DEPLOY_SSH_HOST: ${{ secrets.DEPLOY_SSH_HOST }}
+  DEPLOY_SSH_USERNAME: ${{ secrets.DEPLOY_SSH_USERNAME }}
+  DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+  DEPLOY_SSH_PASSPHRASE: ${{ secrets.DEPLOY_SSH_PASSPHRASE }}
+  DEPLOY_SSH_PORT: ${{ secrets.DEPLOY_SSH_PORT }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    outputs:
+      slack-message-id: ${{ steps.slack-initial.outputs.ts }}
+
+    steps:
+      - name: ⏰ Debounce 5 minutes
+        uses: zachary95/github-actions-debounce
+        with:
+          wait: 300
+
+      - name: 🔀 Checkout
+        uses: actions/checkout@v2
+
+      - name: 💬 Initial Slack Message
+        id: slack-initial
+        uses: weareliondev/weareliondev-devops/.github/actions/slack/notifications/deploy/initial@main
+        with:
+          slack-bot-token: ${{ env.SLACK_BOT_TOKEN }}
+          slack-channel-id: ${{ env.SLACK_CHANNEL_ID }}
+          deploy-url: ${{ env.DEPLOY_URL }}
+          context-status: 'Running: Test Are WebHooks working?'
