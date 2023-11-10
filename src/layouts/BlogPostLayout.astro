@@ -27,7 +27,7 @@ const { title, description, featuredImage } = Astro.props
         </div>
       </div>
       <div class="mb-28 w-full">
-        {featuredImage && <FeaturedImage asset={featuredImage} alt={description} />}
+        {featuredImage && <FeaturedImage image={featuredImage} alt={description} />}
       </div>
       <slot />
     </div>

@@ -11,6 +11,7 @@ export default {
       title: "Title",
       description: "Title for the service section.",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "clients",

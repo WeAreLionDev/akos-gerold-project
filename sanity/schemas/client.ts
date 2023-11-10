@@ -19,7 +19,10 @@ export default defineType({
       type: "image",
       description:
         "Logo of the clients company. Use a transparent background (.png) and a max resolution of 160x160 pixels or an SVG (no size limitations). Ensure that there is no whitespace around the logo.",
-      validation: (rule) => maxImageSizeValidation(rule, CLIENT_MAX_IMAGE_SIZE),
+      validation: (Rule) => [
+        maxImageSizeValidation(Rule, CLIENT_MAX_IMAGE_SIZE),
+        Rule.required(),
+      ],
       fields: [
         defineField({
           name: "alt",

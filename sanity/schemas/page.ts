@@ -11,6 +11,7 @@ export default defineType({
       title: "Page Title",
       description: "Page title displayed in search engines.",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "metaDescription",
@@ -18,6 +19,7 @@ export default defineType({
       description:
         "This is the description that is displayed in search engines.",
       type: "text",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       title: "Is this the homepage?",

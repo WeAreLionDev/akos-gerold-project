@@ -62,6 +62,7 @@ export const sanityHomepageGroqQuery = `
       title,
       body,
       button{url, text},
+      image{alt, asset->{url}},
     },
   }
 }

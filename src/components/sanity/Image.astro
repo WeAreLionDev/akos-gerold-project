@@ -1,21 +1,21 @@
 ---
-import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import type { HTMLAttributes } from 'astro/types'
 import classNames from 'classnames'
 import { useGetImageUrl } from 'src/clients/sanity'
+import type { SanityImageWithAlt } from 'src/types'
 
-type Props = HTMLAttributes<'img'> & { asset: SanityImageSource; containerClass?: string }
+type Props = HTMLAttributes<'img'> & { image: SanityImageWithAlt; containerClass?: string }
 
-const { class: className, containerClass, asset, ...props } = Astro.props
+const { class: className, containerClass, image, ...props } = Astro.props
 
-const fallbackImage = useGetImageUrl(asset).format('png').url()
-const webpMobileUrl = useGetImageUrl(asset).format('webp').width(480).url()
-const webpUrl = useGetImageUrl(asset).format('webp').url()
+const fallbackImage = useGetImageUrl(image.asset.url).format('png').url()
+const webpMobileUrl = useGetImageUrl(image.asset.url).format('webp').width(480).url()
+const webpUrl = useGetImageUrl(image.asset.url).format('webp').url()
 ---
 
 <div class:list={['h-full w-full', containerClass]}>
   <picture>
     <source type="image/webp" srcset=`${webpMobileUrl} 320w, ${webpUrl} 800w` />
-    <img {...props} src={fallbackImage} class={classNames('block h-auto w-full', className)} />
+    <img {...props} src={fallbackImage} class={classNames('block h-auto w-full', className)} alt={image.alt} />
   </picture>
 </div>
