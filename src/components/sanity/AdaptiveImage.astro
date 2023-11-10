@@ -1,25 +1,25 @@
 ---
-import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import type { HTMLAttributes } from 'astro/types'
 import { useGetImageUrl } from 'src/clients/sanity'
+import type { SanityImageWithAlt } from 'src/types'
 
-type Props = HTMLAttributes<'img'> & { assets: { mobile: SanityImageSource; desktop: SanityImageSource }; containerClass?: string }
+type Props = HTMLAttributes<'img'> & { images: { mobile: SanityImageWithAlt; desktop: SanityImageWithAlt }; containerClass?: string }
 
-const { class: className, containerClass, assets, ...props } = Astro.props
+const { class: className, containerClass, images, ...props } = Astro.props
 
-const desktopFallback = useGetImageUrl(assets.desktop).format('png').width(1920).url()
+const desktopFallback = useGetImageUrl(images.desktop.asset.url).format('png').width(1920).url()
 
-const mobileLowFi = useGetImageUrl(assets.mobile).format('webp').width(480).url()
-const mobileHiFi = useGetImageUrl(assets.mobile).format('webp').width(800).url()
+const mobileLowFi = useGetImageUrl(images.mobile.asset.url).format('webp').width(480).url()
+const mobileHiFi = useGetImageUrl(images.mobile.asset.url).format('webp').width(800).url()
 
-const desktopLowFi = useGetImageUrl(assets.desktop).format('webp').width(1200).url()
-const desktopHiFi = useGetImageUrl(assets.desktop).format('webp').width(2400).url()
+const desktopLowFi = useGetImageUrl(images.desktop.asset.url).format('webp').width(1200).url()
+const desktopHiFi = useGetImageUrl(images.desktop.asset.url).format('webp').width(2400).url()
 ---
 
 <div class:list={['h-full w-full', containerClass]}>
   <picture>
     <source media="(max-width: 767px)" type="image/webp" srcset=`${mobileLowFi} 320w, ${mobileHiFi} 800w` />
     <source media="(min-width: 768px)" type="image/webp" srcset=`${desktopLowFi} 1200w, ${desktopHiFi} 2400w` />
-    <img {...props} src={desktopFallback} class:list={['h-full w-full md:h-auto', className]} />
+    <img {...props} src={desktopFallback} class:list={['h-full w-full md:h-auto', className]} alt={images.desktop.alt} />
   </picture>
 </div>

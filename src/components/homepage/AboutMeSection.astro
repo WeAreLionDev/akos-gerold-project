@@ -14,7 +14,7 @@ const { body, image, title } = Astro.props
   className="bg-white py-10 text-stone-950 md:py-20 xl:py-40"
   containerClass="flex flex-col lg:flex-row items-center justify-center lg:justify-around 2xl:justify-between px-4 md:px-10"
 >
-  <Image asset={image} containerClass="mb-20 h-full w-full max-w-lg lg:mb-0 xl:max-w-xl" />
+  <Image image={image} containerClass="mb-20 h-full w-full max-w-lg lg:mb-0 xl:max-w-xl" />
   <div class="flex h-full w-full flex-col justify-end sm:max-w-sm xl:max-w-lg 2xl:max-w-2xl">
     <h2 class="mb-5 font-poppins text-4xl font-bold lg:mb-20 xl:text-5xl">{title}</h2>
     <PortableText portableText={body} class="prose text-lg xl:text-2xl" />

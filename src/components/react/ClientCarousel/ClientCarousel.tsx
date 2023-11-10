@@ -49,7 +49,7 @@ const ClientCarousel: FC<ClientCarouselProps> = ({ clients }) => {
             return (
               <motion.div ref={itemsRef} key={_id} className="flex flex-col items-center justify-center">
                 <div className="flex w-20 cursor-pointer flex-col">
-                  <Image asset={image} alt={companyName} className={imgClasses} />
+                  <Image image={image} className={imgClasses} alt={companyName} />
                 </div>
               </motion.div>
             )
@@ -57,7 +57,7 @@ const ClientCarousel: FC<ClientCarouselProps> = ({ clients }) => {
           return (
             <motion.div key={_id} className="flex flex-col items-center justify-center">
               <div className="flex w-20 cursor-pointer flex-col">
-                <Image asset={image} alt={companyName} className={imgClasses} />
+                <Image image={image} className={imgClasses} alt={companyName} />
               </div>
             </motion.div>
           )

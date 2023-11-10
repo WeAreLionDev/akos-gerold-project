@@ -1,7 +1,6 @@
-import type { SanityImageWithAssetStub } from '@sanity/image-url/lib/types/types'
 import type { PortableTextProps } from 'astro-portabletext/types'
 
-import type { SanityClientType, SanityLinkType, SanityTestimonialType } from 'src/types'
+import type { SanityClientType, SanityImageWithAlt, SanityLinkType, SanityTestimonialType } from 'src/types'
 
 export type SanityHeroSectionType = {
   _type: 'heroSection'
@@ -9,8 +8,8 @@ export type SanityHeroSectionType = {
   tagline: string
   subLink: SanityLinkType
   button: SanityLinkType
-  desktopImage: SanityImageWithAssetStub
-  mobileImage: SanityImageWithAssetStub
+  desktopImage: SanityImageWithAlt
+  mobileImage: SanityImageWithAlt
 }
 
 export type SanityWelcomeSectionType = {
@@ -18,7 +17,7 @@ export type SanityWelcomeSectionType = {
   body: string
   signature: string
   subtitle: string
-  image: SanityImageWithAssetStub
+  image: SanityImageWithAlt
 }
 
 export type SanityClientSectionType = {
@@ -29,14 +28,14 @@ export type SanityClientSectionType = {
 
 export type SanityServiceSectionType = {
   _type: 'serviceSection'
-  image: SanityImageWithAssetStub
+  image: SanityImageWithAlt
   orientation: boolean
   blueTheme: boolean
   title: string
   testimonial: SanityTestimonialType
-  tagline: string
+  tagline?: string
   body: PortableTextProps
-  button: SanityLinkType
+  button?: SanityLinkType
 }
 
 export type SanityTestimonialSectionType = {
@@ -47,7 +46,7 @@ export type SanityTestimonialSectionType = {
 
 export type SanityAboutMeSectionType = {
   _type: 'aboutMeSection'
-  image: SanityImageWithAssetStub
+  image: SanityImageWithAlt
   title: string
   body: string
 }

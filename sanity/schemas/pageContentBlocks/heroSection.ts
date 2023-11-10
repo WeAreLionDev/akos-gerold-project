@@ -15,12 +15,14 @@ export default defineType({
       title: "Heading",
       description: "Main heading for the hero section.",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "tagline",
       title: "Tagline",
       description: "Tagline for the hero section.",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "button",
@@ -28,15 +30,22 @@ export default defineType({
       description: "Link for the button in the hero section.",
       title: "Button",
       fields: [
-        { name: "text", type: "string", title: "Button Text" },
+        {
+          name: "text",
+          type: "string",
+          title: "Button Text",
+          validation: (Rule) => Rule.required(),
+        },
         {
           name: "url",
           type: "url",
           title: "Button URL",
-          validation: (Rule) =>
+          validation: (Rule) => [
             Rule.uri({
               scheme: ["http", "https", "mailto", "tel"],
             }),
+            Rule.required(),
+          ],
         },
       ],
     }),
@@ -51,10 +60,12 @@ export default defineType({
           name: "url",
           type: "url",
           title: "Link URL",
-          validation: (Rule) =>
+          validation: (Rule) => [
             Rule.uri({
               scheme: ["http", "https", "mailto", "tel"],
             }),
+            Rule.required(),
+          ],
         },
       ],
     }),
@@ -63,8 +74,10 @@ export default defineType({
       type: "image",
       description:
         "Image for the hero section, for mobile. Should respect aspect ratio of 9:16.",
-      validation: (rule) =>
-        adaptiveImageValidation(rule, HERO_SECTION_MOBILE_IMAGE_ASPECT_RATIO),
+      validation: (Rule) => [
+        adaptiveImageValidation(Rule, HERO_SECTION_MOBILE_IMAGE_ASPECT_RATIO),
+        Rule.required(),
+      ],
       fields: [
         defineField({
           name: "alt",

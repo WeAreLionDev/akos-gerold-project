@@ -26,7 +26,7 @@ const posts = await getPosts()
       posts.map(({ featuredImage, title, slug, description }) => (
         <div class="flex w-full flex-col gap-12 md:flex-row">
           <div class="w-full md:w-1/2 lg:w-2/5">
-            {featuredImage && <FeaturedImage class="aspect-square" asset={featuredImage.asset.url} alt={title} />}
+            {featuredImage && <FeaturedImage class="aspect-square" image={featuredImage.asset.url} alt={title} />}
           </div>
 
           <div class="flex w-full flex-col justify-center gap-4 md:w-1/2 lg:w-3/5">

@@ -14,7 +14,7 @@ const TestimonialBlock: FC<TestimonialBlockProps> = ({ body, author, position, i
           <h3 className="font-poppins text-base font-semibold">{author}</h3>
           <h4 className="font-poppins text-sm">{position}</h4>
         </div>
-        <Image containerClass="flex max-h-[50px] max-w-[50px] flex-col overflow-hidden rounded-full" asset={image} />
+        <Image containerClass="flex max-h-[50px] max-w-[50px] flex-col overflow-hidden rounded-full" image={image} />
       </div>
     </div>
   )

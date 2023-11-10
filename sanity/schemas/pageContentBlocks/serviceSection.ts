@@ -41,12 +41,14 @@ export default defineType({
       title: "Title",
       description: "Title for the service section.",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "body",
       title: "Body",
       description: "Body for the service section.",
       type: "blockContent",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "testimonial",
