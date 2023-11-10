@@ -13,8 +13,10 @@ export default {
       type: "image",
       description:
         "Image for the Intro section. Max image size: 576:576 pixels.",
-      validation: (rule) =>
-        maxImageSizeValidation(rule, INTRO_SECTION_MAX_IMAGE_SIZE),
+      validation: (Rule) => [
+        maxImageSizeValidation(Rule, INTRO_SECTION_MAX_IMAGE_SIZE),
+        Rule.required(),
+      ],
       fields: [
         defineField({
           name: "alt",
@@ -30,18 +32,21 @@ export default {
       title: "Signature",
       description: "Signature for intro section.",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "subtitle",
       title: "Subtitle",
       description: "Subtitle for intro section.",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "body",
       title: "Body",
       type: "text",
       description: "This for intro section text body.",
+      validation: (Rule) => Rule.required(),
     }),
   ],
 };

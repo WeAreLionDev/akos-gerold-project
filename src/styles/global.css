@@ -1,6 +1,7 @@
 :root {
   --scrollbar-width: 15px;
   --font-size: 16px;
+  --work-with-me-image: url('/homepage/work_with_me_section.webp');
 }
 
 html,
@@ -44,18 +45,18 @@ body {
   grid-area: footer;
 }
 
-.work-with-us-section {
+.work-with-me-section {
   position: relative;
 }
 
-.work-with-us-section::before {
+.work-with-me-section::before {
   @apply opacity-0 md:opacity-75 lg:opacity-100;
   position: absolute;
   right: 0;
   bottom: 0;
   width: 80%;
   height: 80%;
-  background-image: url('/homepage/work_with_us_section.webp');
+  background-image: var(--work-with-me-image);
   background-position: right bottom;
   background-size: contain;
   background-repeat: no-repeat;

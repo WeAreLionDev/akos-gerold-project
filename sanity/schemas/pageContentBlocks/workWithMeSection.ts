@@ -13,8 +13,10 @@ export default {
       type: "image",
       description:
         "Image for the Work With Me section. Max image size: 800x700 pixels.",
-      validation: (rule) =>
-        maxImageSizeValidation(rule, WORK_WITH_ME_SECTION_MAX_IMAGE_SIZE),
+      validation: (Rule) => [
+        maxImageSizeValidation(Rule, WORK_WITH_ME_SECTION_MAX_IMAGE_SIZE),
+        Rule.required(),
+      ],
       fields: [
         defineField({
           name: "alt",
@@ -30,12 +32,14 @@ export default {
       title: "Title",
       description: "Title for the Work With Me section.",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "body",
       title: "Body",
       type: "text",
       description: "This is the work with me section text body.",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "button",
@@ -43,7 +47,12 @@ export default {
       description: "Link for the button in the hero section.",
       title: "Button",
       fields: [
-        { name: "text", type: "string", title: "Button Text" },
+        {
+          name: "text",
+          type: "string",
+          title: "Button Text",
+          validation: (Rule) => Rule.required(),
+        },
         {
           name: "url",
           type: "url",
@@ -51,7 +60,7 @@ export default {
           validation: (Rule) =>
             Rule.uri({
               scheme: ["http", "https", "mailto", "tel"],
-            }),
+            }).required(),
         },
       ],
     }),

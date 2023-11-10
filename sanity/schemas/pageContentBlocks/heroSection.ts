@@ -40,12 +40,10 @@ export default defineType({
           name: "url",
           type: "url",
           title: "Button URL",
-          validation: (Rule) => [
+          validation: (Rule) =>
             Rule.uri({
               scheme: ["http", "https", "mailto", "tel"],
-            }),
-            Rule.required(),
-          ],
+            }).required(),
         },
       ],
     }),
@@ -60,12 +58,10 @@ export default defineType({
           name: "url",
           type: "url",
           title: "Link URL",
-          validation: (Rule) => [
+          validation: (Rule) =>
             Rule.uri({
               scheme: ["http", "https", "mailto", "tel"],
-            }),
-            Rule.required(),
-          ],
+            }).required(),
         },
       ],
     }),
@@ -93,8 +89,10 @@ export default defineType({
       type: "image",
       description:
         "Image for the hero section, for desktop. Should respect aspect ratio of 16:6.",
-      validation: (rule) =>
-        adaptiveImageValidation(rule, HERO_SECTION_DESKTOP_IMAGE_ASPECT_RATIO),
+      validation: (Rule) => [
+        adaptiveImageValidation(Rule, HERO_SECTION_DESKTOP_IMAGE_ASPECT_RATIO),
+        Rule.required(),
+      ],
       fields: [
         defineField({
           name: "alt",

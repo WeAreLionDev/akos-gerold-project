@@ -24,8 +24,10 @@ export default defineType({
       type: "image",
       description:
         "Image for the service section. Max image size: 576x576 pixels.",
-      validation: (rule) =>
-        maxImageSizeValidation(rule, SERVICE_SECTION_MAX_IMAGE_SIZE),
+      validation: (Rule) => [
+        maxImageSizeValidation(Rule, SERVICE_SECTION_MAX_IMAGE_SIZE),
+        Rule.required(),
+      ],
       fields: [
         defineField({
           name: "alt",
@@ -69,7 +71,12 @@ export default defineType({
       description: "Link for the button in the hero section.",
       title: "Button",
       fields: [
-        { name: "text", type: "string", title: "Button Text" },
+        {
+          name: "text",
+          type: "string",
+          title: "Button Text",
+          validation: (Rule) => Rule.required(),
+        },
         {
           name: "url",
           type: "url",
@@ -77,7 +84,7 @@ export default defineType({
           validation: (Rule) =>
             Rule.uri({
               scheme: ["http", "https", "mailto", "tel"],
-            }),
+            }).required(),
         },
       ],
     }),

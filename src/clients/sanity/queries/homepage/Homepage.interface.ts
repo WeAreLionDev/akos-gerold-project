@@ -56,6 +56,7 @@ export type SanityWorkWithMeSectionType = {
   title: string
   body: string
   button: SanityLinkType
+  image: SanityImageWithAlt
 }
 
 export type SanityHomepageSectionsType =

@@ -13,8 +13,10 @@ export default {
       type: "image",
       description:
         "Image for the About Me section. Max image size: 576:900 pixels.",
-      validation: (rule) =>
-        maxImageSizeValidation(rule, ABOUT_ME_SECTION_MAX_IMAGE_SIZE),
+      validation: (Rule) => [
+        maxImageSizeValidation(Rule, ABOUT_ME_SECTION_MAX_IMAGE_SIZE),
+        Rule.required(),
+      ],
       fields: [
         defineField({
           name: "alt",
@@ -30,12 +32,14 @@ export default {
       title: "Title",
       description: "Title for the about me section.",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "body",
       title: "Body",
       description: "Body for the about me section.",
       type: "blockContent",
+      validation: (Rule) => Rule.required(),
     }),
   ],
 };
