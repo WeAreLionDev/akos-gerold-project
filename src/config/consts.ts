@@ -16,14 +16,15 @@ export const NAVIGATION_LINKS: NavigationLinkType[] = [
   { label: 'Contact', href: CONTACT_EMAIL },
 ]
 export const FOOTER_LINKS: NavigationLinkType[] = [
-  { label: 'About', href: '#about-me' },
   { label: 'Services', href: '#services' },
   { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Clients', href: '#clients' },
+  { label: 'About', href: '#about-me' },
 ]
 
 export const SITE_URL = import.meta.env.ASTRO_WEBSITE_URL
 
-export const SITE_TITLE_PREFIX = 'Akos Gerold -'
+export const SITE_TITLE_PREFIX = 'Ákos Gerold -'
 
 export const SANITY_CLIENT_CONFIG = {
   projectId: 'ss3dws13',
