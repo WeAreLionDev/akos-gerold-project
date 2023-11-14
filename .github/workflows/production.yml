@@ -14,10 +14,10 @@ env:
   FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
   SANITY_STUDIO_PROJECT_ID: ${{ secrets.SANITY_STUDIO_PROJECT_ID }}
   SANITY_STUDIO_DATASET: ${{ secrets.SANITY_STUDIO_DATASET }}
-  DEPLOY_SSH_HOST: ${{ secrets.DEPLOY_SSH_HOST }}
-  DEPLOY_SSH_USERNAME: ${{ secrets.DEPLOY_SSH_USERNAME }}
-  DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
-  DEPLOY_SSH_PASSPHRASE: ${{ secrets.DEPLOY_SSH_PASSPHRASE }}
+  DEPLOY_SSH_HOST: ${{ secrets.DEPLOY_SSH_HOST_PROD }}
+  DEPLOY_SSH_USERNAME: ${{ secrets.DEPLOY_SSH_USERNAME_PROD }}
+  DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY_PROD }}
+  DEPLOY_SSH_PASSPHRASE: ${{ secrets.DEPLOY_SSH_PASSPHRASE_PROD }}
   DEPLOY_SSH_PORT: ${{ secrets.DEPLOY_SSH_PORT }}
 
 concurrency:
@@ -141,10 +141,15 @@ jobs:
         run: |
           yarn build
 
+      - name: ⚙️ Copy .htaccess file
+        shell: bash
+        run: |
+          mv deployment/apache/.htaccess .htaccess
+
       - name: 📥 Tar Build
         shell: bash
         run: |
-          tar -cvzf dist.tar.gz dist .env
+          tar -cvzf dist.tar.gz dist .env .htaccess
 
       - name: 📦 Store Build
         uses: actions/upload-artifact@v3.1.3
@@ -201,7 +206,7 @@ jobs:
           key: ${{ env.DEPLOY_SSH_KEY }}
           passphrase: ${{ env.DEPLOY_SSH_PASSPHRASE }}
           port: ${{ env.DEPLOY_SSH_PORT }}
-          source: 'dist/**,.env'
+          source: 'dist/**,.env,.htaccess'
           deploy-path: ${{ env.DEPLOY_PATH }}
 
       - name: 💬 Update Slack Message
