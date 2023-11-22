@@ -232,7 +232,7 @@ jobs:
           key: ${{ env.DEPLOY_SSH_KEY }}
           passphrase: ${{ env.DEPLOY_SSH_PASSPHRASE }}
           port: ${{ env.DEPLOY_SSH_PORT }}
-          source: 'dist/**,.env'
+          source: 'dist/**,.env,.htaccess'
           deploy-path: ${{ env.DEPLOY_PATH }}
 
       - name: 💬 Update Slack Message
