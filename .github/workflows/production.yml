@@ -206,15 +206,7 @@ jobs:
           key: ${{ env.DEPLOY_SSH_KEY }}
           passphrase: ${{ env.DEPLOY_SSH_PASSPHRASE }}
           port: ${{ env.DEPLOY_SSH_PORT }}
-<<<<<<< HEAD
-<<<<<<< HEAD
           source: 'dist/**,.env,.htaccess'
-=======
-          source: 'dist/**,.env,deployment/apache/.htaccess'
->>>>>>> a547bee (feat: [AKO-45] some minor fixes to the website and workflows)
-=======
-          source: 'dist/**,.env,deployment/apache/.htaccess'
->>>>>>> a547bee5832ad80d6df5450fe3db549634bac1d5
           deploy-path: ${{ env.DEPLOY_PATH }}
 
       - name: 💬 Update Slack Message
