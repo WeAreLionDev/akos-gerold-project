@@ -3,9 +3,9 @@ import type { HTMLAttributes } from 'astro/types'
 
 type Props = Pick<HTMLAttributes<'a'>, 'href' | 'class'> & { label: string }
 
-const { href, label } = Astro.props
+const { href, label, ...props } = Astro.props
 ---
 
 <li>
-  <a href={href} target="_blank" class="block py-2 text-zinc-100 hover:text-amber-400" rel="noopener noreferrer">{label}</a>
+  <a {...props} href={href} class="block py-2 text-zinc-100 hover:text-amber-400">{label}</a>
 </li>

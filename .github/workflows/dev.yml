@@ -141,10 +141,15 @@ jobs:
         run: |
           yarn build
 
+      - name: ⚙️ Copy .htaccess file
+        shell: bash
+        run: |
+          mv deployment/apache/.htaccess .htaccess
+
       - name: 📥 Tar Build
         shell: bash
         run: |
-          tar -cvzf dist.tar.gz dist .env
+          tar -cvzf dist.tar.gz dist .env .htaccess
 
       - name: 📦 Store Build
         uses: actions/upload-artifact@v3.1.3
@@ -201,7 +206,7 @@ jobs:
           key: ${{ env.DEPLOY_SSH_KEY }}
           passphrase: ${{ env.DEPLOY_SSH_PASSPHRASE }}
           port: ${{ env.DEPLOY_SSH_PORT }}
-          source: 'dist/**,.env'
+          source: 'dist/**,.env,deployment/apache/.htaccess'
           deploy-path: ${{ env.DEPLOY_PATH }}
 
       - name: 💬 Update Slack Message
